@@ -13,11 +13,23 @@ export class CardsComponent implements OnInit {
 
   homeTeamFlag: string;
 
+  awayTeamFlag: string;
+
+  humanReadadbleDate: string;
+
   constructor() { }
 
   ngOnInit() {
     this.homeTeamFlag = this.singleMatchData.homeTeam.flag;
+    this.awayTeamFlag = this.singleMatchData.awayTeam.flag;
     console.log(this.homeTeamFlag);
+    console.log(this.awayTeamFlag);
+
+    const date = new Date(this.singleMatchData.dateTime);
+   // alert(date.toDateString());
+    console.log(date.toDateString());
+
+
   }
 
 }
