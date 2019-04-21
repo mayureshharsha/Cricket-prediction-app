@@ -1,3 +1,4 @@
+
 .customText{
 
     font-size: 150%;
@@ -6,3 +7,34 @@
 :host >>> .ui-card-header img {
     width: 10%;
 }
+
+.pulse {
+    border: 2px;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      -moz-box-shadow: 0 0 -10px  green;
+      box-shadow: 0 0 -10px  green;
+    }
+    40% {
+        -moz-box-shadow: 0 0 20px green;
+        box-shadow: 0 0 20px green;
+    }
+
+    60% {
+        -moz-box-shadow: 0 0 20px green;
+        box-shadow: 0 0 20px green;
+    }
+    80% {
+        -moz-box-shadow: 0 0 -10px green;
+        box-shadow: 0 0 -10px green;
+    }
+
+    100% {
+      -moz-box-shadow: 0  0 -10px green;
+      box-shadow: 0 0  -10px green;
+  }
+  }
+
