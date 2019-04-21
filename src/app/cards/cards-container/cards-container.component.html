@@ -1,11 +1,6 @@
 <div class="p-grid container-fluid">
-  <div class="p-col-12 p-md-6 p-lg-3"><app-cards ></app-cards></div>
-  <div class="p-col-12 p-md-6 p-lg-3"><app-cards></app-cards></div>
-  <div class="p-col-12 p-md-6 p-lg-3"><app-cards></app-cards></div>
-  <div class="p-col-12 p-md-6 p-lg-3"><app-cards></app-cards></div>
-  <div class="p-col-12 p-md-6 p-lg-3"><app-cards></app-cards></div>
-  <div class="p-col-12 p-md-6 p-lg-3"><app-cards></app-cards></div>
-  <div class="p-col-12 p-md-6 p-lg-3"><app-cards></app-cards></div>
-  <div class="p-col-12 p-md-6 p-lg-3"><app-cards></app-cards></div>
-  <div class="p-col-12 p-md-6 p-lg-3"><app-cards></app-cards></div>
+  <div class="p-col-12 p-md-6 p-lg-4" *ngFor="let item of matchData">
+    <app-cards [singleMatchData]="item"></app-cards>
+  </div>
+
 </div>
