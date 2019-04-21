@@ -1,24 +1,33 @@
 <div class="mt-0 mb-0 mr-0 ml-0 pulse">
-
-
-  <p-card styleClass="ui-card-shadow border border-danger " >
-    <p-header >
+<p-card styleClass="ui-card-shadow border border-dark rounded" >
+  <p-header >
+<div class="text-center pt-3">
   
-      <div class="text-center pt-3">INDIA VS PAKISTAN</div>
-     
-      
-    </p-header>
-    <div class="text-center pt-3">
+      <img src= {{singleMatchData.homeTeam.flag}} >
+    {{singleMatchData.homeTeam.name}} vs {{singleMatchData.awayTeam.name}}
   
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Virat..Kohli.jpg" width="50" height="60" border-radius = "60px" class="rounded-circle"> vs
-        <img src="https://www.cricbuzz.com/stats/img/faceImages/881.jpg" width="50" height="60" class="rounded-circle">     
-    </div>
-    <p-footer> 
-      <div class="text-center">
-          <button pButton type="button" label="Predict" icon="pi pi-check" class="text-center"></button>
-      </div>  
-    </p-footer>
-  </p-card>
+   
 </div>
+   
+    
+  </p-header>
+  <div class="text-center pt-3">
+
+      <img src="singleMatchData.homeTeam.flag" width="50" height="60" border-radius = "60px"> vs
+      <img src="https://www.cricbuzz.com/stats/img/faceImages/881.jpg" width="50" height="60" class="rounded-circle">
+       
+  </div>
+
+  <div class="text-center pt-3">
+    
+    <div>Venue : {{singleMatchData.venue}}</div>
+     
+  </div>
+  <p-footer> 
+    <div class="text-center">
+        <button pButton type="button" label="Predict" icon="pi pi-check" class="text-center"></button>
+    </div>
+    </div>
+
   
 
