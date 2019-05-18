@@ -1,10 +1,10 @@
-<div class="mt-0 mb-0 mr-0 ml-0 pulse">
+<div class="mt-0 mb-0 mr-0 ml-0">
   <p-card styleClass="ui-card-shadow border border-dark rounded">
     <p-header>
       <div class="text-center pt-3">
 
         <img src={{singleMatchData.homeTeam.flag}}>
-        {{singleMatchData.homeTeam.name}}<strong >vs</strong> {{singleMatchData.awayTeam.name}}
+        {{singleMatchData.homeTeam.name}}<strong class="pl-1">vs</strong> {{singleMatchData.awayTeam.name}}
         <img src={{singleMatchData.awayTeam.flag}}>
 
       </div>
@@ -12,14 +12,36 @@
     </p-header>
 
     <div class="text-center pt-3">
-
+      <div>Date : {{humanReadadbleDate}}</div>
       <div>Venue : {{singleMatchData.venue}}</div>
 
     </div>
     <p-footer>
       <div class="text-center">
-        <button pButton type="button" label="Predict" icon="pi pi-check" class="text-center"></button>
+        <button pButton type="button" data-toggle="modal" data-target="#exampleModal" (click)="predict()"
+                label="Predict" icon="pi pi-check" class="text-center"></button>
       </div>
     </p-footer>
   </p-card>
+  <!-- Large modal -->
+
+  <p-dialog [modal]="true" [responsive]="true" [(visible)]="display" [transitionOptions]="'0ms'"
+            [style]="{width: '500px', height: '700px'}" [contentStyle]="{'max-height':'700px','overflow': 'auto'}">
+    <p-header>Lets Predict</p-header>
+    <div class="m-10">
+      Will {{singleMatchData.homeTeam.name}} win tonight?
+      <p-radioButton name="groupname" value="Win" label="Win" [(ngModel)]="homeTeamResult"></p-radioButton>
+      <p-radioButton name="groupname" value="Lose" label="Lose" [(ngModel)]="homeTeamResult"></p-radioButton>
+
+      <p-radioButton name="groupname" value="Draw" label="Draw" [(ngModel)]="homeTeamResult"></p-radioButton>
+
+
+    </div>
+
+
+    <p-footer class="m-5">
+      <button pButton type="button" label="Save" (click)="saveResult()"></button>
+    </p-footer>
+  </p-dialog>
+
 </div>

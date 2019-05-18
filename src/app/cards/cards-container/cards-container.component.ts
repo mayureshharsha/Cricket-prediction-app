@@ -13,6 +13,8 @@ export class CardsContainerComponent implements OnInit {
 
   constructor(private matchesService: MatchesService) { }
 
+  
+
   ngOnInit() {
     this.matchesService.getAllMatchData()
       .subscribe((data: MatchData[]) => {
@@ -20,4 +22,5 @@ export class CardsContainerComponent implements OnInit {
         console.log(this.matchData.length);
       });
   }
+ 
 }

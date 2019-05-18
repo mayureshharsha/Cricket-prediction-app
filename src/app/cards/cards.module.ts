@@ -11,14 +11,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule } from '@angular/common/http';
-
-
-
-
+import {DialogModule} from 'primeng/dialog';
+import {DropdownModule} from 'primeng/dropdown';
+import {RadioButtonModule} from 'primeng/radiobutton';
 
 @NgModule({
   declarations: [CardsComponent, CardsContainerComponent],
   imports: [
+    RadioButtonModule,
+    DropdownModule,
     CommonModule,
     BrowserModule,
     FormsModule,
@@ -27,7 +28,8 @@ import {HttpClientModule } from '@angular/common/http';
     CardModule,
     CommonModule,
     ButtonModule,
-    PanelModule
+    PanelModule,
+    DialogModule
   ]
 })
 export class CardsModule { }
