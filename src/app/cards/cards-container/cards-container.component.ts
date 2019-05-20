@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MatchesService } from 'src/app/matches.service';
-import { MatchData } from 'src/app/match-data';
+import {Component, OnInit} from '@angular/core';
+import {MatchesService} from 'src/app/matches.service';
+import {MatchData} from 'src/app/match-data';
 
 @Component({
   selector: 'app-cards-container',
@@ -11,9 +11,9 @@ export class CardsContainerComponent implements OnInit {
 
   matchData: MatchData[];
 
-  constructor(private matchesService: MatchesService) { }
+  constructor(private matchesService: MatchesService) {
+  }
 
-  
 
   ngOnInit() {
     this.matchesService.getAllMatchData()
@@ -22,5 +22,5 @@ export class CardsContainerComponent implements OnInit {
         console.log(this.matchData.length);
       });
   }
- 
+
 }
