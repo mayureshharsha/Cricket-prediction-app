@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatchesService} from '../matches.service';
-import {PredictionData} from '../prediction-data';
+import { LeadershipBoard} from '../leadership-board';
 
 @Component({
   selector: 'app-leadership-board',
@@ -9,16 +9,22 @@ import {PredictionData} from '../prediction-data';
 })
 export class LeadershipBoardComponent implements OnInit {
 
-  predictionData: PredictionData;
 
-  constructor(private matchesService: MatchesService) { }
+
+  leadershipBoard: LeadershipBoard[];
+
+
+  constructor(private matchesService: MatchesService) {
+  }
 
   ngOnInit() {
     console.log('inside onInit method');
     this.matchesService.getLeadershipBoard().subscribe(
-      (predictionData: PredictionData) => {
-        this.predictionData = predictionData;
-        console.log(this.predictionData);
+      (leadershipBoards: LeadershipBoard[]) => {
+        this.leadershipBoard = leadershipBoards;
+        console.log(this.leadershipBoard);
+
+
 
       }
     );

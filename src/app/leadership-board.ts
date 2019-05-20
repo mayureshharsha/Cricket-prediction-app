@@ -1,4 +1,4 @@
-export interface UserDetails {
+export interface LeadershipBoard {
 
   userName: string;
   totalPoints: number;
@@ -6,9 +6,3 @@ export interface UserDetails {
 }
 
 
-export interface LeadershipBoard {
-
-
-  userDetails: UserDetails[];
-
-}

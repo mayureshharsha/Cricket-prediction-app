@@ -1,3 +1,17 @@
-<p>
-  leadership-board works!
-</p>
+<div class="text-center m-5" >
+  <p-table [value]="leadershipBoard" >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>UserName</th>
+        <th>Total Points</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-leader>
+      <tr>
+        <td style="text-align: center">{{leader.userName}}</td>
+        <td tyle="text-align: center">{{leader.totalPoints}}</td>
+
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

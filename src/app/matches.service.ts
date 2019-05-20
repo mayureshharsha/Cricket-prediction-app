@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {PredictionData} from "./prediction-data";
 import {Observable} from "rxjs";
+import {LeadershipBoard} from "./leadership-board";
 
 @Injectable({
   providedIn: 'root'
@@ -26,9 +27,9 @@ export class MatchesService {
 
   }
 
-   getLeadershipBoard(): Observable<PredictionData> {
+   getLeadershipBoard(): Observable<LeadershipBoard[]> {
     console.log('leaderShip board');
-    return this.http.get<PredictionData>('http://localhost:8087/userDetails');
+    return this.http.get<LeadershipBoard[]>('http://localhost:8087/leadershipBoard');
 
   }
 
