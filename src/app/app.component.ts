@@ -14,7 +14,9 @@ export class AppComponent implements  OnInit {
     this.items = [
       {
         label: 'Home',
-        routerLink : 'home'
+        routerLink : 'home',
+        icon : 'pi pi-home'
+
 
       },
       {
@@ -26,6 +28,11 @@ export class AppComponent implements  OnInit {
       {
         label: 'Leadership Board',
         routerLink : 'leadershipboard'
+      },
+      {
+        label: 'Logout',
+        routerLink : '/',
+        icon : 'pi pi-power-off'
       }
     ];
   }

@@ -1,4 +1,4 @@
-<div class="text-center m-5" >
+<div class="container mt-5 text-center" >
   <p-table [value]="leadershipBoard" >
     <ng-template pTemplate="header">
       <tr>
@@ -8,8 +8,8 @@
     </ng-template>
     <ng-template pTemplate="body" let-leader>
       <tr>
-        <td style="text-align: center">{{leader.userName}}</td>
-        <td tyle="text-align: center">{{leader.totalPoints}}</td>
+        <td >{{leader.userName}}</td>
+        <td >{{leader.totalPoints}}</td>
 
       </tr>
     </ng-template>

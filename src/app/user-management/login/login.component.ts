@@ -9,10 +9,12 @@ import {User} from "../../model/user";
 export class LoginComponent implements OnInit {
 
 
-  user: User ;
+  user: User;
   msgs: any;
 
   constructor() {
+    this.user = <User>{};
+
   }
 
   ngOnInit() {

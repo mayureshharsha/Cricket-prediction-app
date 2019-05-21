@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import {InputTextModule} from 'primeng/inputtext';
-import {FormsModule} from "@angular/forms";
-import {ButtonModule, GrowlModule, PasswordModule} from "primeng/primeng";
+import {FormsModule} from '@angular/forms';
+import {ButtonModule, GrowlModule, PasswordModule} from 'primeng/primeng';
+
 
 @NgModule({
   declarations: [RegistrationComponent, LoginComponent],
@@ -14,7 +15,8 @@ import {ButtonModule, GrowlModule, PasswordModule} from "primeng/primeng";
     FormsModule,
     PasswordModule,
     GrowlModule,
-    ButtonModule
+    ButtonModule,
+
   ]
 })
 export class UserManagementModule { }
