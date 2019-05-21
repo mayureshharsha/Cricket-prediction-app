@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row centered-form">
+    <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Login</h3>
+        </div>
+        <div class="panel-body">
+          <form role="form">
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon">
+                      <i class="fa fa-user"></i>
+                    </span>
+                    <input type="text" name="userName" pInputText placeholder="Username" [(ngModel)]="user.userName">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <div class="ui-inputgroup">
+                    <input type="password" name="password" [feedback]="false" pPassword placeholder="Password" [(ngModel)]="user.password">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button pButton type="submit" (click)="login()" label="Login"></button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-growl [(value)]="msgs"></p-growl>
+

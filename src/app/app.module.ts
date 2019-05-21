@@ -11,6 +11,7 @@ import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import { PredictionHistoryComponent } from './prediction-history/prediction-history.component';
 import { LeadershipBoardComponent } from './leadership-board/leadership-board.component';
+import {UserManagementModule} from './user-management/user-management.module';
 
 
 
@@ -26,7 +27,8 @@ import { LeadershipBoardComponent } from './leadership-board/leadership-board.co
     MenubarModule,
     BrowserModule,
     AppRoutingModule,
-    CardsModule
+    CardsModule,
+    UserManagementModule
   ],
   providers: [MatchesService],
   bootstrap: [AppComponent]
