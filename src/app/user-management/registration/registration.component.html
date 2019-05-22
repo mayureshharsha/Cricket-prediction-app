@@ -1,0 +1,57 @@
+
+
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Register</h5>
+          <form class="form-signin">
+            <div class="form-label-group ">
+              <span class="ui-float-label">
+              <input pInputText type="text" id="float-input" class="form-control" placeholder="username" required>
+               <label for="float-input">Name</label>
+            </span>
+            </div>
+
+
+            <div class="form-label-group">
+              <span class="ui-float-label">
+              <input type="email"  pInputText    id="email" class="form-control" placeholder="email" required ngModel="userRegistration.email" email="true" >
+              <label for="email">email</label>
+              </span>
+            </div>
+
+            <div class="form-label-group">
+              <span class="ui-float-label">
+              <input type="password"  pPassword  [feedback]="true"  id="inputPassword" class="form-control" placeholder="Password" required>
+              <label for="inputPassword">Password</label>
+              </span>
+            </div>
+
+            <div class="form-label-group">
+              <span class="ui-float-label">
+              <input type="password"  pPassword  [feedback]="false"  id="confirmPassword" class="form-control" placeholder="Confirm Password" required>
+              <label for="confirmPassword">Conform Password</label>
+              </span>
+            </div>
+
+
+
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <label class="custom-control-label" for="customCheck1">Remember password</label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" (click)="login()">Sign in</button>
+            <hr class="my-4">
+            <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"> Register</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>

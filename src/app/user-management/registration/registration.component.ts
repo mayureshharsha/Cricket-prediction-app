@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UserRegistration} from "../../model/user-registration";
+import {Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-registration',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() { }
+
+  userRegistration: UserRegistration;
+
+  constructor(private router: Router, private http: HttpClient) {
+
+    this.userRegistration = {} as UserRegistration;
+  }
 
   ngOnInit() {
+    this.http.post(
+
+    )
+
   }
 
 }

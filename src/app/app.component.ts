@@ -6,7 +6,7 @@ import {MenuItem} from 'primeng/api';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements  OnInit {
+export class AppComponent implements OnInit {
   title = 'cricket-prediction-ui';
   items: MenuItem[];
 
@@ -14,25 +14,24 @@ export class AppComponent implements  OnInit {
     this.items = [
       {
         label: 'Home',
-        routerLink : 'home',
-        icon : 'pi pi-home'
-
-
-      },
-      {
-        label: 'History',
-        routerLink : 'predictionhistory'
+        routerLink: 'matches',
+        icon: 'pi pi-home'
 
 
       },
       {
         label: 'Leadership Board',
-        routerLink : 'leadershipboard'
+        routerLink: 'leadershipboard',
+        icon: 'pi pi-users'
+      },
+      {
+        label: 'History',
+        routerLink: 'predictionhistory'
       },
       {
         label: 'Logout',
-        routerLink : '/',
-        icon : 'pi pi-power-off'
+        routerLink: 'login',
+        icon: 'pi pi-power-off'
       }
     ];
   }

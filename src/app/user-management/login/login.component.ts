@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../model/user";
+import {User} from '../../model/user';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   user: User;
   msgs: any;
 
-  constructor() {
+  constructor(private router: Router) {
     this.user = <User>{};
 
   }
@@ -21,6 +22,10 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+     this.router.navigateByUrl('/home');
+  }
 
+  register() {
+    this.router.navigateByUrl('/register');
   }
 }

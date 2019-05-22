@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RegistrationComponent } from './registration/registration.component';
-import { LoginComponent } from './login/login.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RegistrationComponent} from './registration/registration.component';
+import {LoginComponent} from './login/login.component';
 import {InputTextModule} from 'primeng/inputtext';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ButtonModule, GrowlModule, PasswordModule} from 'primeng/primeng';
+import {AppRoutingModule} from '../app-routing.module';
 
 
 @NgModule({
@@ -16,7 +17,10 @@ import {ButtonModule, GrowlModule, PasswordModule} from 'primeng/primeng';
     PasswordModule,
     GrowlModule,
     ButtonModule,
+    AppRoutingModule,
+    ReactiveFormsModule
 
   ]
 })
-export class UserManagementModule { }
+export class UserManagementModule {
+}

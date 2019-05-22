@@ -4,10 +4,11 @@ import {CardsContainerComponent} from './cards/cards-container/cards-container.c
 import {PredictionHistoryComponent} from './prediction-history/prediction-history.component';
 import {LeadershipBoardComponent} from './leadership-board/leadership-board.component';
 import {LoginComponent} from './user-management/login/login.component';
+import {RegistrationComponent} from "./user-management/registration/registration.component";
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'matches',
     component: CardsContainerComponent
   },
   {
@@ -20,7 +21,16 @@ const routes: Routes = [
   },
   {
     path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegistrationComponent
   }
 ];
 
