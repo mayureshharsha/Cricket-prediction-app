@@ -4,14 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardsModule } from './cards/cards.module';
-import { MatchesService } from './matches.service';
+import { MatchesService } from './cards/matches.service';
 import {MenubarModule} from 'primeng/menubar';
-import {MenuItem} from 'primeng/api';
+import {MenuItem, MessageService} from 'primeng/api';
 import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import { PredictionHistoryComponent } from './prediction-history/prediction-history.component';
 import { LeadershipBoardComponent } from './leadership-board/leadership-board.component';
 import {UserManagementModule} from './user-management/user-management.module';
+import {ToastModule} from 'primeng/toast';
 
 
 
@@ -28,9 +29,10 @@ import {UserManagementModule} from './user-management/user-management.module';
     BrowserModule,
     AppRoutingModule,
     CardsModule,
-    UserManagementModule
+    UserManagementModule,
+    ToastModule
   ],
-  providers: [MatchesService],
+  providers: [MatchesService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

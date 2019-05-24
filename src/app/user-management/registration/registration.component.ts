@@ -19,9 +19,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.post(
-
-    )
+  
 
   }
 

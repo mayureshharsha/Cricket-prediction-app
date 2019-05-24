@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {MatchesService} from '../matches.service';
-import { LeadershipBoard} from '../leadership-board';
+import {MatchesService} from '../cards/matches.service';
+import {LeadershipBoard} from '../model/leadership-board';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-leadership-board',
@@ -10,11 +11,10 @@ import { LeadershipBoard} from '../leadership-board';
 export class LeadershipBoardComponent implements OnInit {
 
 
-
   leadershipBoard: LeadershipBoard[];
 
 
-  constructor(private matchesService: MatchesService) {
+  constructor(private matchesService: MatchesService, private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -23,9 +23,9 @@ export class LeadershipBoardComponent implements OnInit {
       (leadershipBoards: LeadershipBoard[]) => {
         this.leadershipBoard = leadershipBoards;
         console.log(this.leadershipBoard);
-
-
-
+        this.messageService.add({severity: 'success', summary: 'Leadership board successfully updated', detail: 'Via MessageService'});
+      }, error1 => {
+        console.log(error1);
       }
     );
 

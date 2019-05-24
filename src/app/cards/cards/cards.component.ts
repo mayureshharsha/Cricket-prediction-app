@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MatchData} from 'src/app/match-data';
-import {PredictionData} from '../../prediction-data';
-import {MatchesService} from "../../matches.service";
+import {MatchData} from 'src/app/model/match-data';
+import {PredictionData} from '../../model/prediction-data';
+import {MatchesService} from "../matches.service";
 
 @Component({
   selector: 'app-cards',

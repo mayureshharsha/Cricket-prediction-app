@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MatchesService} from 'src/app/matches.service';
-import {MatchData} from 'src/app/match-data';
+import {MatchesService} from 'src/app/cards/matches.service';
+import {MatchData} from 'src/app/model/match-data';
 
 @Component({
   selector: 'app-cards-container',

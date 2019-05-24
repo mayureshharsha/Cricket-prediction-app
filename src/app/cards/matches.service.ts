@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {PredictionData} from "./prediction-data";
+import {PredictionData} from "../model/prediction-data";
 import {Observable} from "rxjs";
-import {LeadershipBoard} from "./leadership-board";
+import {LeadershipBoard} from "../model/leadership-board";
 
 @Injectable({
   providedIn: 'root'
