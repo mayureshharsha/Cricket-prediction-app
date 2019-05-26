@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatchData} from 'src/app/model/match-data';
 import {PredictionData} from '../../model/prediction-data';
-import {MatchesService} from "../matches.service";
+import {MatchesService} from '../matches.service';
 
 @Component({
   selector: 'app-cards',
@@ -13,9 +13,10 @@ export class CardsComponent implements OnInit {
   @Input()
   singleMatchData: MatchData;
 
+  predictionResult: PredictionData;
+
   homeTeamFlag: string;
 
-  homeTeamResult: string;
 
   results: any[];
 
@@ -23,8 +24,26 @@ export class CardsComponent implements OnInit {
 
   humanReadadbleDate: string;
   display: boolean;
+  players: any[];
+  mom: any;
+  teams: any[];
 
-  constructor(private matchService : MatchesService) {
+  constructor(private matchService: MatchesService) {
+
+    this.predictionResult = {} as PredictionData;
+
+    this.players = [
+      {name: 'Virat Kohli', code: 'NY'},
+      {name: 'M S Dhoni', code: 'RM'},
+      {name: 'Rohit Sharma', code: 'LDN'},
+      {name: 'hardik Pandya', code: 'IST'},
+      {name: 'Bhuvnesh Kumar', code: 'PRS'},
+      {name: 'Bhuvnesh Kumar', code: 'PRS'},
+      {name: 'Bhuvnesh Kumar', code: 'PRS'},
+      {name: 'Bhuvnesh Kumar', code: 'PRS'},
+      {name: 'Bhuvnesh Kumar', code: 'PRS'}
+    ];
+
 
     this.results = [
       {name: 'YES', code: 'YES'},
@@ -33,18 +52,19 @@ export class CardsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.teams = [
+      {
+        name: this.singleMatchData.homeTeam.name, code: this.singleMatchData.homeTeam.name,
+      },
+      {
+        name: this.singleMatchData.awayTeam.name, code: this.singleMatchData.awayTeam.name,
+      }
+    ];
 
-    this.homeTeamFlag = this.singleMatchData.homeTeam.flag;
-    this.awayTeamFlag = this.singleMatchData.awayTeam.flag;
-    console.log(this.homeTeamFlag);
-    console.log(this.awayTeamFlag);
-
+    this.homeTeamFlag = '/assets/' + this.singleMatchData.homeTeam.name + '.png';
+    this.awayTeamFlag = '/assets/' + this.singleMatchData.awayTeam.name + '.png';
     const date = new Date(this.singleMatchData.dateTime);
-    // alert(date.toDateString());
     this.humanReadadbleDate = date.toLocaleDateString();
-    console.log(date.toDateString());
-
-
   }
 
   predict() {
@@ -65,7 +85,7 @@ export class CardsComponent implements OnInit {
     };
 
     this.matchService.savePredictionData(predictionResult).subscribe(
-      ( response : any) => {
+      (response: any) => {
         console.log('Successfully posted Data');
       }
     );

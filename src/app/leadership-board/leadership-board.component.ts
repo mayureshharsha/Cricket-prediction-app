@@ -13,6 +13,8 @@ export class LeadershipBoardComponent implements OnInit {
 
   leadershipBoard: LeadershipBoard[];
 
+  isLoaded = false;
+
 
   constructor(private matchesService: MatchesService, private messageService: MessageService) {
   }
@@ -23,9 +25,14 @@ export class LeadershipBoardComponent implements OnInit {
       (leadershipBoards: LeadershipBoard[]) => {
         this.leadershipBoard = leadershipBoards;
         console.log(this.leadershipBoard);
+        this.isLoaded = true;
         this.messageService.add({severity: 'success', summary: 'Leadership board successfully updated', detail: 'Via MessageService'});
       }, error1 => {
+
         console.log(error1);
+        this.isLoaded = false;
+        this.messageService.add({severity: 'error', summary: 'Something went wrong', detail: 'Please try again'});
+
       }
     );
 

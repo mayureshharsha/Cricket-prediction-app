@@ -25,8 +25,9 @@ export class AppComponent implements OnInit {
         icon: 'pi pi-users'
       },
       {
-        label: 'History',
-        routerLink: 'predictionhistory'
+        label: 'Prediction History',
+        routerLink: 'predictionhistory',
+        icon: 'pi pi-bookmark'
       },
       {
         label: 'Logout',

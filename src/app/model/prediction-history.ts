@@ -5,4 +5,6 @@ export interface PredictionHistory {
   awayTeam: string;
   prediction: string;
   actualResult: string;
+  points: number;
 }
+

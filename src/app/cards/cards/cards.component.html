@@ -3,15 +3,16 @@
     <p-header>
       <div class="text-center pt-3">
 
-        <img src={{singleMatchData.homeTeam.flag}}>
+        <img [src]="homeTeamFlag">
         {{singleMatchData.homeTeam.name}}<strong class="pl-1">vs</strong> {{singleMatchData.awayTeam.name}}
-        <img src={{singleMatchData.awayTeam.flag}}>
+        <img [src]="awayTeamFlag">
 
       </div>
 
     </p-header>
 
     <div class="text-center pt-3">
+      <div>Match number: {{singleMatchData.matchId}}</div>
       <div>Date : {{humanReadadbleDate}}</div>
       <div>Venue : {{singleMatchData.venue}}</div>
 
@@ -25,23 +26,39 @@
   </p-card>
   <!-- Large modal -->
 
-  <p-dialog [modal]="true" [responsive]="true" [(visible)]="display" [transitionOptions]="'0ms'"
-            [style]="{width: '500px', height: '700px'}" [contentStyle]="{'max-height':'700px','overflow': 'auto'}">
+  <p-dialog  [contentStyle]="{'overflow':'visible'}"
+             [modal]="true" [responsive]="true" [(visible)]="display" [transitionOptions]="'5ms'"
+
+            [style]="{width: '500px', height: '7000px !important'}">
     <p-header>Lets Predict</p-header>
-    <div class="m-10">
-      Will {{singleMatchData.homeTeam.name}} win tonight?
-      <p-radioButton name="groupname" value="Win" label="Win" [(ngModel)]="homeTeamResult"></p-radioButton>
-      <p-radioButton name="groupname" value="Lose" label="Lose" [(ngModel)]="homeTeamResult"></p-radioButton>
-
-      <p-radioButton name="groupname" value="Draw" label="Draw" [(ngModel)]="homeTeamResult"></p-radioButton>
 
 
-    </div>
+    <form>
+
+      <div class="form-group">
+        Will {{singleMatchData.homeTeam.name}} win tonight?
+        <p-radioButton name="groupname" value="Win" label="Win" [(ngModel)]="predictionResult.homeResult" class="mr-1"></p-radioButton>
+        <p-radioButton name="groupname" value="Lose" label="Lose" [(ngModel)]="predictionResult.homeResult" class="mr-1"></p-radioButton>
+        <p-radioButton name="groupname" value="Draw" label="Draw" [(ngModel)]="predictionResult.homeResult" class="mr-1"> </p-radioButton>
+      </div>
+
+
+      <div class="form-group">
+
+        <div class="m-10">
+          <div><span>Select Man of the Match  </span><p-dropdown  class="p-0" [options]="players" [(ngModel)]="predictionResult.manOfTheMatch" optionLabel="name"></p-dropdown>
+          </div>
+          <div> <span>Toss Ka Boss</span>  <p-dropdown  class="p-0" [options]="teams" [(ngModel)]="predictionResult.tossKaBoss" optionLabel="name"></p-dropdown></div>
+        </div>
+      </div>
+
+    </form>
 
 
     <p-footer class="m-5">
       <button pButton type="button" label="Save" (click)="saveResult()"></button>
     </p-footer>
+
   </p-dialog>
 
 </div>

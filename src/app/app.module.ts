@@ -13,6 +13,10 @@ import { PredictionHistoryComponent } from './prediction-history/prediction-hist
 import { LeadershipBoardComponent } from './leadership-board/leadership-board.component';
 import {UserManagementModule} from './user-management/user-management.module';
 import {ToastModule} from 'primeng/toast';
+import { SpinnerComponent } from './spinner/spinner/spinner.component';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {SpinnerModule} from './spinner/spinner.module';
+
 
 
 
@@ -30,9 +34,13 @@ import {ToastModule} from 'primeng/toast';
     AppRoutingModule,
     CardsModule,
     UserManagementModule,
-    ToastModule
+    ToastModule,
+    ProgressSpinnerModule,
+    SpinnerModule
   ],
   providers: [MatchesService, MessageService],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

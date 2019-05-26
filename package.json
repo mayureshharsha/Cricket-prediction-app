@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "mock-server": "json-server leadership_board.json --port 8087"
+    "mock-leadership": "json-server leadership_board.json --port 8087",
+    "mock-prediction": "json-server prediction-history.json --port 8088"
   },
   "private": true,
   "dependencies": {
