@@ -10,14 +10,14 @@
           <form class="form-signin">
             <div class="form-label-group ">
               <span class="ui-float-label">
-              <input pInputText type="text" id="float-input" class="form-control" placeholder="username" required>
+              <input pInputText type="text" id="float-input" class="form-control" [(ngModel)]="user.username" placeholder="username" required>
                <label for="float-input">Username</label>
             </span>
             </div>
 
             <div class="form-label-group">
               <span class="ui-float-label">
-              <input type="password"  pPassword  [feedback]="false"  id="inputPassword" class="form-control" placeholder="Password" required>
+              <input type="password"  pPassword  [feedback]="false"  [(ngModel)]="user.username" id="inputPassword" class="form-control" placeholder="Password" required>
               <label for="inputPassword">Password</label>
               </span>
             </div>
