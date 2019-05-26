@@ -27,12 +27,13 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.user).subscribe(
       (response) => {
         this.loginService.userName = this.user.username
+        document.cookie = JSON.stringify(response)
         this.router.navigateByUrl('/home');
       },
       error => {
         this.loginService.userName = null;
         console.log(error);
-        this.router.navigateByUrl('/home');
+
       }
     );
 

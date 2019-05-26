@@ -10,7 +10,7 @@
           <form class="form-signin">
             <div class="form-label-group ">
               <span class="ui-float-label">
-              <input pInputText type="text" id="float-input" class="form-control" placeholder="username" required>
+              <input pInputText type="text" id="float-input"  name="username" class="form-control" placeholder="username" [(ngModel)]="userRegistration.username" required>
                <label for="float-input">Name</label>
             </span>
             </div>
@@ -18,21 +18,21 @@
 
             <div class="form-label-group">
               <span class="ui-float-label">
-              <input type="email"  pInputText    id="email" class="form-control" placeholder="email" required ngModel="userRegistration.email" email="true" >
+              <input type="email"  pInputText    id="email" name="email" class="form-control" placeholder="email" required [(ngModel)]="userRegistration.email" email="true" >
               <label for="email">email</label>
               </span>
             </div>
 
             <div class="form-label-group">
               <span class="ui-float-label">
-              <input type="password"  pPassword  [feedback]="true"  id="inputPassword" class="form-control" placeholder="Password" required>
+              <input type="password"  pPassword  [feedback]="true" name="password"  id="inputPassword" class="form-control" [(ngModel)]="userRegistration.password" placeholder="Password" required>
               <label for="inputPassword">Password</label>
               </span>
             </div>
 
             <div class="form-label-group">
               <span class="ui-float-label">
-              <input type="password"  pPassword  [feedback]="false"  id="confirmPassword" class="form-control" placeholder="Confirm Password" required>
+              <input type="password"  pPassword  [feedback]="false" name="confirmPassword"  id="confirmPassword" class="form-control" placeholder="Confirm Password" required>
               <label for="confirmPassword">Conform Password</label>
               </span>
             </div>
@@ -43,9 +43,8 @@
               <input type="checkbox" class="custom-control-input" id="customCheck1">
               <label class="custom-control-label" for="customCheck1">Remember password</label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" (click)="login()">Sign in</button>
             <hr class="my-4">
-            <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"> Register</button>
+            <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit" (click)="register()"> Register</button>
 
           </form>
         </div>

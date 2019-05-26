@@ -1,8 +1,8 @@
 export interface PredictionData {
 
   matchId: number;
-  userId: string;
+  userId: number;
   homeResult: string;
-  manOfTheMatch: string;
-  tossKaBoss: string;
+  momResult: string;
+  tossResult: string;
 }

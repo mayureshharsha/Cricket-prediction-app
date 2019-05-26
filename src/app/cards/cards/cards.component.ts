@@ -76,15 +76,18 @@ export class CardsComponent implements OnInit {
     console.log('Inside Save Result');
     this.display = false;
 
-    const predictionResult: PredictionData = {
-      userId: '1',
-      homeResult: 'win',
-      matchId: 1,
-      tossKaBoss: 'India',
-      manOfTheMatch: 'Virat'
-    };
+    /*   const predictionResult: PredictionData = {
+         userId: '1',
+         homeResult: 'win',
+         matchId: 1,
+         tossResult: 'India',
+         momResult: 'Virat'
+       };*/
 
-    this.matchService.savePredictionData(predictionResult).subscribe(
+    this.predictionResult.matchId = this.singleMatchData.matchId;
+    this.predictionResult.userId = JSON.parse(document.cookie).userId;
+
+    this.matchService.savePredictionData(this.predictionResult).subscribe(
       (response: any) => {
         console.log('Successfully posted Data');
       }
