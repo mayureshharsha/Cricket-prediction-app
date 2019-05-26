@@ -7,17 +7,17 @@
       <div class="card card-signin my-5">
         <div class="card-body">
           <h5 class="card-title text-center">Sign In</h5>
-          <form class="form-signin">
+          <form class="form-signin" role="form">
             <div class="form-label-group ">
               <span class="ui-float-label">
-              <input pInputText type="text" id="float-input" class="form-control" [(ngModel)]="user.username" placeholder="username" required>
+              <input pInputText type="text" id="float-input" class="form-control" [(ngModel)]="user.username" placeholder="username" name="user" required>
                <label for="float-input">Username</label>
             </span>
             </div>
 
             <div class="form-label-group">
               <span class="ui-float-label">
-              <input type="password"  pPassword  [feedback]="false"  [(ngModel)]="user.username" id="inputPassword" class="form-control" placeholder="Password" required>
+              <input type="password"  pPassword  [feedback]="false"  [(ngModel)]="user.password" id="inputPassword" class="form-control" placeholder="Password" [ngModelOptions]="{standalone: true}" required>
               <label for="inputPassword">Password</label>
               </span>
             </div>

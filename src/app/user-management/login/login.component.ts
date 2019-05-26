@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../model/user';
 import {Router} from '@angular/router';
-import {LoginService} from "./login.service";
+import {LoginService} from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -23,16 +23,16 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.user.userName);
+    console.log(this.user.password + this.user.username);
     this.loginService.login(this.user).subscribe(
       (response) => {
-        this.loginService.userName = this.user.userName
+        this.loginService.userName = this.user.username
         this.router.navigateByUrl('/home');
       },
       error => {
         this.loginService.userName = null;
         console.log(error);
-
+        this.router.navigateByUrl('/home');
       }
     );
 
