@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MenuItem} from 'primeng/api';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,19 @@ import {MenuItem} from 'primeng/api';
 export class AppComponent implements OnInit {
   title = 'cricket-prediction-ui';
   items: MenuItem[];
+  currentRoute: string;
+
+
+  constructor(private router: Router) {
+  }
+
+  hideMenu(): boolean {
+    return (this.router.url != '/login' && this.router.url != '/register')
+  }
 
   ngOnInit() {
+
+    this.currentRoute = this.router.url;
     this.items = [
       {
         label: 'Home',

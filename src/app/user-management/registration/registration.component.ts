@@ -20,6 +20,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   ngOnInit() {
+    alert(this.router.url);
 
 
   }

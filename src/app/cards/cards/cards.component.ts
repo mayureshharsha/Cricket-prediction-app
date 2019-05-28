@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {MatchData} from 'src/app/model/match-data';
 import {PredictionData} from '../../model/prediction-data';
 import {MatchesService} from '../matches.service';
+import {SelectItem} from 'primeng/api';
 
 @Component({
   selector: 'app-cards',
@@ -26,7 +27,7 @@ export class CardsComponent implements OnInit {
   display: boolean;
   players: any[];
   mom: any;
-  teams: any[];
+  teams: SelectItem[];
 
   constructor(private matchService: MatchesService) {
 
@@ -54,12 +55,16 @@ export class CardsComponent implements OnInit {
   ngOnInit() {
     this.teams = [
       {
-        name: this.singleMatchData.homeTeam.name, code: this.singleMatchData.homeTeam.name,
+        label: "Select a value", value: null,
       },
       {
-        name: this.singleMatchData.awayTeam.name, code: this.singleMatchData.awayTeam.name,
+        label: this.singleMatchData.homeTeam.name, value: 'W',
+      },
+      {
+        label: this.singleMatchData.awayTeam.name, value: 'L',
       }
     ];
+
 
     this.homeTeamFlag = '/assets/' + this.singleMatchData.homeTeam.name + '.png';
     this.awayTeamFlag = '/assets/' + this.singleMatchData.awayTeam.name + '.png';
@@ -86,7 +91,7 @@ export class CardsComponent implements OnInit {
 
     this.predictionResult.matchId = this.singleMatchData.matchId;
     this.predictionResult.userId = JSON.parse(document.cookie).userId;
-
+    this.predictionResult.tossResult = this.predictionResult.tossResult.value;
     this.matchService.savePredictionData(this.predictionResult).subscribe(
       (response: any) => {
         console.log('Successfully posted Data');

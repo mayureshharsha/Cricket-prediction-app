@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {PredictionData} from '../model/prediction-data';
 import {Observable} from 'rxjs';
 import {LeadershipBoard} from '../model/leadership-board';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class MatchesService {
 
   savePredictionData(predictionData: PredictionData) {
     console.log(predictionData);
-    return this.http.post('http://localhost:8090//v1/predmgmt/predictions',
+    return this.http.post(environment.hostUrl+'/v1/predmgmt/predictions',
       predictionData,
       {
         headers: {

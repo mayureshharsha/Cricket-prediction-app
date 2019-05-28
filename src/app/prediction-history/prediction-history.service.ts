@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class PredictionHistoryService {
 
   getPredictionHistory() {
 
-    return this.http.get('http://localhost:8088/prediction-history');
+    return this.http.get(environment.hostUrl +'/v1/predmgmt/predictionsbyuser/'+ JSON.parse(document.cookie).userId);
 
   }
 }
