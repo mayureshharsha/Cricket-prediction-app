@@ -26,7 +26,7 @@ export class LeadershipBoardComponent implements OnInit {
         this.leadershipBoard = leadershipBoards;
         console.log(this.leadershipBoard);
         this.isLoaded = true;
-        this.messageService.add({severity: 'success', summary: 'Leadership board successfully updated', detail: 'Via MessageService'});
+        this.messageService.add({severity: 'success', summary: 'Leadership board successfully updated', detail: 'Success'});
       }, error1 => {
 
         console.log(error1);

@@ -6,10 +6,11 @@ import {InputTextModule} from 'primeng/inputtext';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ButtonModule, GrowlModule, PasswordModule} from 'primeng/primeng';
 import {AppRoutingModule} from '../app-routing.module';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
-  declarations: [RegistrationComponent, LoginComponent],
+  declarations: [RegistrationComponent, LoginComponent, LogoutComponent],
   imports: [
     CommonModule,
     InputTextModule,

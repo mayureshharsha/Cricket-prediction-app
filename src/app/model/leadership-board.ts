@@ -1,7 +1,7 @@
 export interface LeadershipBoard {
 
-  userName: string;
-  totalPoints: number;
+  username: string;
+  points: number;
 
 }
 

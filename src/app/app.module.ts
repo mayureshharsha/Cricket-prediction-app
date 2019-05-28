@@ -16,6 +16,7 @@ import {ToastModule} from 'primeng/toast';
 import { SpinnerComponent } from './spinner/spinner/spinner.component';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {SpinnerModule} from './spinner/spinner.module';
+import {PredictionPipe} from "./pipes/Prediction.pipe";
 
 
 
@@ -24,7 +25,8 @@ import {SpinnerModule} from './spinner/spinner.module';
   declarations: [
     AppComponent,
     PredictionHistoryComponent,
-    LeadershipBoardComponent
+    LeadershipBoardComponent,
+    PredictionPipe
   ],
   imports: [
     TableModule,

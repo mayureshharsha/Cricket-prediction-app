@@ -17,6 +17,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {SpinnerModule} from '../spinner/spinner.module';
 import {UserManagementModule} from '../user-management/user-management.module';
+import {ToastModule} from "primeng/toast";
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {UserManagementModule} from '../user-management/user-management.module';
     DialogModule,
     ProgressSpinnerModule,
     SpinnerModule,
-    UserManagementModule
+    UserManagementModule,
+    ToastModule
   ]
 })
 export class CardsModule {

@@ -7,16 +7,20 @@
         <th>Away Team</th>
         <th>Prediction</th>
         <th>Actual Result</th>
+        <th>Toss</th>
+        <th>Actual Toss Result</th>
         <th>Points</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-pHistory>
       <tr>
         <td>{{pHistory.matchId}}</td>
-        <td>{{pHistory.homeTeam}}</td>
-        <td>{{pHistory.awayTeam}}</td>
-        <td>{{pHistory.prediction}}</td>
-        <td>{{pHistory.actualResult}}</td>
+        <td>{{pHistory.match.homeTeam.name}} </td>
+        <td>{{pHistory.match.awayTeam.name}}</td>
+        <td>{{pHistory.homeResult | predictionPipe}}</td>
+        <td>{{pHistory.match.homeResult | predictionPipe}}</td>
+        <td>{{pHistory.tossResult | predictionPipe}}</td>
+        <td>{{pHistory.match.tossResult | predictionPipe}}</td>
         <td>{{pHistory.points}}</td>
       </tr>
     </ng-template>

@@ -1,10 +1,13 @@
 <div class="p-grid container-fluid">
   <div class="p-col-12 p-md-6 p-lg-4" *ngFor="let item of matchData">
-    <app-cards [singleMatchData]="item"></app-cards>
+    <app-cards [singleMatchData]="item" [disabled] = "matchIds.includes(item.matchId)"></app-cards>
   </div>
 
 </div>
 
-<app-spinner [isLoaded]="!isLoaded"></app-spinner>
+<!--<app-spinner [isLoaded]="!isLoaded"></app-spinner>-->
 
-
+<div class="spinner_overlay">
+  <div id="spinnerContainer"><p-progressSpinner id="spinner" *ngIf="!isLoaded" strokeWidth="5" fill="#EEEEEE"
+                          animationDuration="1.5s"></p-progressSpinner></div>
+</div>

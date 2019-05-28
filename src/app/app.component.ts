@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
       },
       {
         label: 'Logout',
-        routerLink: 'login',
+        routerLink: 'logout',
         icon: 'pi pi-power-off'
       }
     ];

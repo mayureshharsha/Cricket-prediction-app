@@ -11,15 +11,12 @@ import {environment} from "../../environments/environment";
 export class MatchesService {
 
 
-  matchDataUrl = 'https://raw.githubusercontent.com/mayureshharsha/cricpred/master/Data_Matches.json';
-
-
   constructor(private http: HttpClient) {
   }
 
   getAllMatchData() {
-    console.log(this.http.get(this.matchDataUrl));
-    return this.http.get(this.matchDataUrl);
+
+    return this.http.get(environment.matchurl);
   }
 
   savePredictionData(predictionData: PredictionData) {
@@ -37,7 +34,7 @@ export class MatchesService {
 
   getLeadershipBoard(): Observable<LeadershipBoard[]> {
     console.log('leaderShip board');
-    return this.http.get<LeadershipBoard[]>('http://localhost:8087/leadershipBoard');
+    return this.http.get<LeadershipBoard[]>(environment.hostUrl + '/v1/resultMgmt/results' );
 
   }
 

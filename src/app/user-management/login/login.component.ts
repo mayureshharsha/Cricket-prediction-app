@@ -27,12 +27,11 @@ export class LoginComponent implements OnInit {
     console.log(this.user.password + this.user.username);
     this.loginService.login(this.user).subscribe(
       (response) => {
-        this.loginService.userName = this.user.username
         document.cookie = JSON.stringify(response)
         this.router.navigateByUrl('/home');
       },
       error => {
-        this.loginService.userName = null;
+
         console.log(error);
 
       }

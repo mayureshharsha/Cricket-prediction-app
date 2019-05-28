@@ -9,7 +9,7 @@ export class SpinnerComponent implements OnInit {
 
 
 
- @Input("isLoaded") isLoaded = true;
+ @Input("isLoaded") isLoaded : boolean;
 
   constructor() { }
 

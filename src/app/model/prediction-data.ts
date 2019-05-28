@@ -4,5 +4,5 @@ export interface PredictionData {
   userId: number;
   homeResult: string;
   momResult: string;
-  tossResult: string;
+  tossResult: any;
 }

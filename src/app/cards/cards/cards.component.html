@@ -19,7 +19,7 @@
     </div>
     <p-footer>
       <div class="text-center">
-        <button pButton type="button" data-toggle="modal" data-target="#exampleModal" (click)="predict()"
+        <button pButton type="button" data-toggle="modal" data-target="#exampleModal"  [disabled]="disabled" (click)="predict()"
                 label="Predict" icon="pi pi-check" class="text-center"></button>
       </div>
     </p-footer>
@@ -30,35 +30,41 @@
              [modal]="true" [responsive]="true" [(visible)]="display" [transitionOptions]="'5ms'"
 
             [style]="{width: '500px', height: '7000px !important'}">
-    <p-header>Lets Predict</p-header>
+    <p-header>Lets Predict: {{singleMatchData.homeTeam.name}} vs  {{singleMatchData.awayTeam.name}}</p-header>
 
 
     <form>
 
       <div class="form-group">
-        Will {{singleMatchData.homeTeam.name}} win tonight?
-        <p-radioButton name="groupname" value="W" label="Win" [(ngModel)]="predictionResult.homeResult" class="mr-1"></p-radioButton>
-        <p-radioButton name="groupname" value="L" label="Lose" [(ngModel)]="predictionResult.homeResult" class="mr-1"></p-radioButton>
-        <p-radioButton name="groupname" value="D" label="Draw" [(ngModel)]="predictionResult.homeResult" class="mr-1"> </p-radioButton>
+        <span class="mr-4">Will {{singleMatchData.homeTeam.name}} win tonight?</span>
+        <p-radioButton name="groupname" value="W" label="Win" [(ngModel)]="predictionResult.homeResult" class="mr-3"></p-radioButton>
+        <p-radioButton name="groupname" value="L" label="Lose" [(ngModel)]="predictionResult.homeResult" class="mr-3"></p-radioButton>
+        <p-radioButton name="groupname" value="D" label="Draw" [(ngModel)]="predictionResult.homeResult" class="mr-3"> </p-radioButton>
       </div>
 
 
       <div class="form-group">
 
         <div class="m-10">
-          <div><span>Select Man of the Match  </span><p-dropdown name="predictionResult" class="p-0"  [options]="players"  [(ngModel)]="predictionResult.momResult" optionLabel="label"></p-dropdown>
-          </div>
-          <div> <span>Toss Ka Boss</span>  <p-dropdown name="predictionResult" class="p-0" [options]="teams" [(ngModel)]="predictionResult.tossResult"  optionLabel="label"></p-dropdown></div>
+          <!--<div><span>Select Man of the Match  </span><p-dropdown name="predictionResult" class="p-0"  [options]="players"  [(ngModel)]="predictionResult.momResult" optionLabel="label"></p-dropdown>
+          </div>-->
+          <div> <span class="mr-4">Toss Ka Boss</span>  <p-dropdown name="predictionResult" class="p-0" [options]="teams" [(ngModel)]="predictionResult.tossResult"  optionLabel="label"></p-dropdown></div>
         </div>
       </div>
 
     </form>
 
 
-    <p-footer class="m-5">
-      <button pButton type="button" label="Save" (click)="saveResult()"></button>
+    <p-footer class="ml-5 text-right">
+      <button pButton type="button" label="Save" [disabled]="!predictionResult.homeResult || !predictionResult.tossResult" (click)="saveResult()"></button>
     </p-footer>
 
   </p-dialog>
+
+  <div class="spinner_overlay">
+    <div id="spinnerContainer"><p-progressSpinner id="spinner" *ngIf="!isLoaded" strokeWidth="5" fill="#EEEEEE"
+                                                  animationDuration="1.5s"></p-progressSpinner></div>
+  </div>
+
 
 </div>

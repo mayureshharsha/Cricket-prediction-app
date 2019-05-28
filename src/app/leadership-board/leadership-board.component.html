@@ -1,15 +1,17 @@
-<div class="container mt-5 text-center" >
+<div class="container mt-5 text-center">
   <p-table [value]="leadershipBoard" >
     <ng-template pTemplate="header">
       <tr>
+        <th>Rank</th>
         <th>UserName</th>
         <th>Total Points</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-leader>
+    <ng-template pTemplate="body" let-leader let-rowIndex="rowIndex">
       <tr>
-        <td >{{leader.userName}}</td>
-        <td >{{leader.totalPoints}}</td>
+        <td>{{rowIndex + 1}}</td>
+        <td>{{leader.username}}</td>
+        <td>{{leader.points}}</td>
 
       </tr>
     </ng-template>
