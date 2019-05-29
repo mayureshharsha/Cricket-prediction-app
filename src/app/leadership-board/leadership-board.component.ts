@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatchesService} from '../cards/matches.service';
 import {LeadershipBoard} from '../model/leadership-board';
 import {MessageService} from 'primeng/api';
+import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-leadership-board',
@@ -13,26 +14,22 @@ export class LeadershipBoardComponent implements OnInit {
 
   leadershipBoard: LeadershipBoard[];
 
-  isLoaded = false;
-
-
-  constructor(private matchesService: MatchesService, private messageService: MessageService) {
+  constructor(private matchesService: MatchesService,
+              private messageService: MessageService,
+              private ng4LoadingSpinnerService: Ng4LoadingSpinnerService) {
   }
 
   ngOnInit() {
-    console.log('inside onInit method');
+    this.ng4LoadingSpinnerService.show();
     this.matchesService.getLeadershipBoard().subscribe(
       (leadershipBoards: LeadershipBoard[]) => {
+        this.ng4LoadingSpinnerService.hide();
         this.leadershipBoard = leadershipBoards;
-        console.log(this.leadershipBoard);
-        this.isLoaded = true;
         this.messageService.add({severity: 'success', summary: 'Leadership board successfully updated', detail: 'Success'});
       }, error1 => {
-
+        this.ng4LoadingSpinnerService.hide();
         console.log(error1);
-        this.isLoaded = false;
         this.messageService.add({severity: 'error', summary: 'Something went wrong', detail: 'Please try again'});
-
       }
     );
 

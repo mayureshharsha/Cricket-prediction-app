@@ -5,7 +5,8 @@ import {PredictionHistoryComponent} from './prediction-history/prediction-histor
 import {LeadershipBoardComponent} from './leadership-board/leadership-board.component';
 import {LoginComponent} from './user-management/login/login.component';
 import {RegistrationComponent} from './user-management/registration/registration.component';
-import {LogoutComponent} from "./user-management/logout/logout.component";
+import {LogoutComponent} from './user-management/logout/logout.component';
+import {RulesComponent} from './rules/rules.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegistrationComponent
+  },
+  {
+    path: 'rules',
+    component: RulesComponent
   }
 ];
 

@@ -36,9 +36,9 @@
     <form>
 
       <div class="form-group">
-        <span class="mr-4">Will {{singleMatchData.homeTeam.name}} win tonight?</span>
-        <p-radioButton name="groupname" value="W" label="Win" [(ngModel)]="predictionResult.homeResult" class="mr-3"></p-radioButton>
-        <p-radioButton name="groupname" value="L" label="Lose" [(ngModel)]="predictionResult.homeResult" class="mr-3"></p-radioButton>
+        <span class="mr-4">Choose the WINNER </span>
+        <p-radioButton name="groupname" value="W" label="{{singleMatchData.homeTeam.name}}" [(ngModel)]="predictionResult.homeResult" class="mr-3"></p-radioButton>
+        <p-radioButton name="groupname" value="L" label="{{singleMatchData.awayTeam.name}}" [(ngModel)]="predictionResult.homeResult" class="mr-3"></p-radioButton>
         <p-radioButton name="groupname" value="D" label="Draw" [(ngModel)]="predictionResult.homeResult" class="mr-3"> </p-radioButton>
       </div>
 
@@ -60,11 +60,4 @@
     </p-footer>
 
   </p-dialog>
-
-  <div class="spinner_overlay">
-    <div id="spinnerContainer"><p-progressSpinner id="spinner" *ngIf="!isLoaded" strokeWidth="5" fill="#EEEEEE"
-                                                  animationDuration="1.5s"></p-progressSpinner></div>
-  </div>
-
-
 </div>

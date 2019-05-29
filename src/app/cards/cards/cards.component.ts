@@ -3,7 +3,8 @@ import {MatchData} from 'src/app/model/match-data';
 import {PredictionData} from '../../model/prediction-data';
 import {MatchesService} from '../matches.service';
 import {MessageService, SelectItem} from 'primeng/api';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
+import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-cards',
@@ -32,9 +33,9 @@ export class CardsComponent implements OnInit {
   players: any[];
   mom: any;
   teams: SelectItem[];
-  isLoaded = true;
 
-  constructor(private matchService: MatchesService, private router: Router, private messageService: MessageService) {
+  constructor(private matchService: MatchesService, private router: Router, private messageService: MessageService,
+              private ng4LoadingSpinnerService: Ng4LoadingSpinnerService) {
 
     this.predictionResult = {} as PredictionData;
 
@@ -60,7 +61,7 @@ export class CardsComponent implements OnInit {
   ngOnInit() {
     this.teams = [
       {
-        label: "Select a value", value: null,
+        label: 'Select', value: null,
       },
       {
         label: this.singleMatchData.homeTeam.name, value: 'W',
@@ -78,13 +79,11 @@ export class CardsComponent implements OnInit {
   }
 
   predict() {
-    console.log('inside predict');
     this.display = true;
   }
 
   saveResult() {
-    this.isLoaded = false;
-    console.log('Inside Save Result');
+    this.ng4LoadingSpinnerService.show();
     this.display = false;
 
     this.predictionResult.matchId = this.singleMatchData.matchId;
@@ -97,12 +96,12 @@ export class CardsComponent implements OnInit {
           summary: 'Leadership board successfully updated',
           detail: 'Success'
         });
-        this.isLoaded = true;
+        this.ng4LoadingSpinnerService.hide();
         console.log('Successfully posted Data');
-         this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/home');
 
       }, error1 => {
-        this.isLoaded = true;
+        this.ng4LoadingSpinnerService.hide();
         this.messageService.add({
           severity: 'error',
           summary: 'Something Went Wrong'

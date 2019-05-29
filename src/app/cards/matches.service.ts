@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {PredictionData} from '../model/prediction-data';
 import {Observable} from 'rxjs';
 import {LeadershipBoard} from '../model/leadership-board';
-import {environment} from "../../environments/environment";
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +20,7 @@ export class MatchesService {
   }
 
   savePredictionData(predictionData: PredictionData) {
-    console.log(predictionData);
-    return this.http.post(environment.hostUrl+'/v1/predmgmt/predictions',
+    return this.http.post(environment.hostUrl + '/v1/predmgmt/predictions',
       predictionData,
       {
         headers: {
@@ -33,8 +32,13 @@ export class MatchesService {
   }
 
   getLeadershipBoard(): Observable<LeadershipBoard[]> {
-    console.log('leaderShip board');
     return this.http.get<LeadershipBoard[]>(environment.hostUrl + '/v1/resultMgmt/results' );
+
+  }
+
+  getPointsOfUser(userId: number): Observable<number> {
+    return this.http.get<number>(
+      environment.hostUrl + '/v1/resultMgmt/results/' + userId );
 
   }
 

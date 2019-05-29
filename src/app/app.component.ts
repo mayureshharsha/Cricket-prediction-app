@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
 
       },
       {
-        label: 'Leadership Board',
+        label: 'Leader Board',
         routerLink: 'leadershipboard',
         icon: 'pi pi-users'
       },
@@ -40,6 +40,11 @@ export class AppComponent implements OnInit {
         label: 'Prediction History',
         routerLink: 'predictionhistory',
         icon: 'pi pi-bookmark'
+      },
+      {
+        label: 'Rules',
+        routerLink: 'rules',
+        icon: 'pi pi-info-circle  '
       },
       {
         label: 'Logout',

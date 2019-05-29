@@ -1,4 +1,4 @@
-import {MatchData} from "./match-data";
+import {MatchData} from './match-data';
 
 
 export interface PredictionHistory {
@@ -9,6 +9,6 @@ export interface PredictionHistory {
   prediction: string;
   actualResult: string;
   points: number;
-  match : MatchData;
+  match: MatchData;
 }
 

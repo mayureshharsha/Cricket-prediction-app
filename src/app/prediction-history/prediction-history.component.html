@@ -5,9 +5,9 @@
         <th>Match number</th>
         <th>Home Team</th>
         <th>Away Team</th>
-        <th>Prediction</th>
+        <th>Winner Prediction</th>
         <th>Actual Result</th>
-        <th>Toss</th>
+        <th>Toss Prediction</th>
         <th>Actual Toss Result</th>
         <th>Points</th>
       </tr>
@@ -17,11 +17,11 @@
         <td>{{pHistory.matchId}}</td>
         <td>{{pHistory.match.homeTeam.name}} </td>
         <td>{{pHistory.match.awayTeam.name}}</td>
-        <td>{{pHistory.homeResult | predictionPipe}}</td>
-        <td>{{pHistory.match.homeResult | predictionPipe}}</td>
-        <td>{{pHistory.tossResult | predictionPipe}}</td>
-        <td>{{pHistory.match.tossResult | predictionPipe}}</td>
-        <td>{{pHistory.points}}</td>
+        <td>{{getPredictionMatchWinner(pHistory)}}</td>
+        <td>{{getActualMatchWinner(pHistory)}}</td>
+        <td>{{getPredictionTossWinner(pHistory)}}</td>
+        <td>{{getActualTossWinner(pHistory)}}</td>
+        <td>{{calculate(pHistory)}}</td>
       </tr>
     </ng-template>
 
@@ -30,5 +30,3 @@
 </div>
 
 <p-toast position="bottom-right"></p-toast>
-
-

@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.user.password + this.user.username);
     this.loginService.login(this.user).subscribe(
       (response) => {
         document.cookie = JSON.stringify(response)

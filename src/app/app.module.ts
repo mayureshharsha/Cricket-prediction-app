@@ -13,10 +13,9 @@ import { PredictionHistoryComponent } from './prediction-history/prediction-hist
 import { LeadershipBoardComponent } from './leadership-board/leadership-board.component';
 import {UserManagementModule} from './user-management/user-management.module';
 import {ToastModule} from 'primeng/toast';
-import { SpinnerComponent } from './spinner/spinner/spinner.component';
-import {ProgressSpinnerModule} from 'primeng/progressspinner';
-import {SpinnerModule} from './spinner/spinner.module';
-import {PredictionPipe} from "./pipes/Prediction.pipe";
+import {PredictionPipe} from './pipes/Prediction.pipe';
+import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
+import { RulesComponent } from './rules/rules.component';
 
 
 
@@ -26,7 +25,8 @@ import {PredictionPipe} from "./pipes/Prediction.pipe";
     AppComponent,
     PredictionHistoryComponent,
     LeadershipBoardComponent,
-    PredictionPipe
+    PredictionPipe,
+    RulesComponent
   ],
   imports: [
     TableModule,
@@ -37,8 +37,7 @@ import {PredictionPipe} from "./pipes/Prediction.pipe";
     CardsModule,
     UserManagementModule,
     ToastModule,
-    ProgressSpinnerModule,
-    SpinnerModule
+    Ng4LoadingSpinnerModule
   ],
   providers: [MatchesService, MessageService],
   exports: [

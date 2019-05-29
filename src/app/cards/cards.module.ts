@@ -14,10 +14,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {DialogModule} from 'primeng/dialog';
 import {DropdownModule} from 'primeng/dropdown';
 import {RadioButtonModule} from 'primeng/radiobutton';
-import {ProgressSpinnerModule} from 'primeng/progressspinner';
-import {SpinnerModule} from '../spinner/spinner.module';
 import {UserManagementModule} from '../user-management/user-management.module';
-import {ToastModule} from "primeng/toast";
+import {ToastModule} from 'primeng/toast';
+import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 
 
 @NgModule({
@@ -35,10 +34,9 @@ import {ToastModule} from "primeng/toast";
     ButtonModule,
     PanelModule,
     DialogModule,
-    ProgressSpinnerModule,
-    SpinnerModule,
     UserManagementModule,
-    ToastModule
+    ToastModule,
+    Ng4LoadingSpinnerModule
   ]
 })
 export class CardsModule {
