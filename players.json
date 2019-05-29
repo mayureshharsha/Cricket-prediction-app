@@ -14,7 +14,9 @@
       "RAHMAT SHAH",
       "RASHID KHAN",
       "SAMIULLAH SHINWARI"
-    ],
+    ]
+  },
+  {
     "Australia": [
       "AARON FINCH",
       "JASON BEHRENDORFF",
@@ -31,7 +33,9 @@
       "MARCUS STOINIS",
       "DAVID WARNER",
       "ADAM ZAMPA"
-    ],
+    ]
+  },
+  {
     "India": [
       "VIRAT KOHLI",
       "ROHIT SHARMA",
@@ -48,7 +52,9 @@
       "HARDIK PANDYA",
       "KL RAHUL",
       "VIJAY SHANKAR"
-    ],
+    ]
+  },
+  {
     "Pakistan": [
       "SARFARAZ AHMED",
       "ASIF ALI",
@@ -71,7 +77,9 @@
       "MALIK",
       "WAHAB",
       "RIAZ"
-    ],
+    ]
+  },
+  {
     "Sri Lanka": [
       "DIMUTH KARUNARATNE",
       "DHANANJAYA DE SILVA",
@@ -88,7 +96,9 @@
       "LAHIRU THIRIMANNE",
       "ISURU UDANA",
       "JEFFREY VANDERSAY"
-    ],
+    ]
+  },
+  {
     "WestIndies": [
       "JASON HOLDER",
       "FABIAN ALLEN",
