@@ -18,7 +18,8 @@ export class LoginService {
       {
         headers: {
           'Content-Type': 'application/json'
-        }
+        },
+        withCredentials: true
       }
     );
   }
@@ -27,6 +28,7 @@ export class LoginService {
     return this.http.post(environment.hostUrl + '/v1/usermgmt/users',
       userRegistration,
       {
+        withCredentials: true,
         headers: {
           'Content-Type': 'application/json'
         }
