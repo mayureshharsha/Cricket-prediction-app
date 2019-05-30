@@ -25,14 +25,17 @@ export class MatchesService {
       {
         headers: {
           'Content-Type': 'application/json'
-        }
+        },
+        withCredentials: true
       }
     );
 
   }
 
   getLeadershipBoard(): Observable<LeadershipBoard[]> {
-    return this.http.get<LeadershipBoard[]>(environment.hostUrl + '/v1/resultMgmt/results' );
+    return this.http.get<LeadershipBoard[]>(environment.hostUrl + '/v1/resultMgmt/results', {
+      withCredentials: true
+    });
 
   }
 
