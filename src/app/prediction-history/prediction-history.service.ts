@@ -11,7 +11,10 @@ export class PredictionHistoryService {
 
   getPredictionHistory() {
 
-    return this.http.get(environment.hostUrl +'/v1/predmgmt/predictionsByUser/'+ JSON.parse(document.cookie).userId);
+    return this.http.get(environment.hostUrl +'/v1/predmgmt/predictionsByUser/'+ JSON.parse(document.cookie).userId,
+      {
+        withCredentials: true
+      });
 
   }
 }
