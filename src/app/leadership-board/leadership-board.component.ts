@@ -24,6 +24,7 @@ export class LeadershipBoardComponent implements OnInit {
     this.matchesService.getLeadershipBoard().subscribe(
       (leadershipBoards: LeadershipBoard[]) => {
         this.ng4LoadingSpinnerService.hide();
+        leadershipBoards.sort(this.compare)
         this.leadershipBoard = leadershipBoards;
         this.messageService.add({severity: 'success', summary: 'Leadership board successfully updated', detail: 'Success'});
       }, error1 => {
@@ -34,4 +35,15 @@ export class LeadershipBoardComponent implements OnInit {
     );
 
   }
+  
+  compare( a, b ) {
+    if ( a.points > b.points ) {
+      return -1;
+    }
+    if ( a.points < b.points ) {
+      return 1;
+    }
+    return 0;
+  }
+  
 }
