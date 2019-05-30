@@ -34,7 +34,7 @@ export class PredictionHistoryComponent implements OnInit {
 
         this.messageService.add({
           severity: 'success',
-          summary: 'Total Points ' + this.totalPoints
+          summary: 'Updated'
         });
 
       }, error1 => {

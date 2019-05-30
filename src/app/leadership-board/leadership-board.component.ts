@@ -24,8 +24,17 @@ export class LeadershipBoardComponent implements OnInit {
     this.matchesService.getLeadershipBoard().subscribe(
       (leadershipBoards: LeadershipBoard[]) => {
         this.ng4LoadingSpinnerService.hide();
-        leadershipBoards.sort(this.compare)
+        leadershipBoards.sort(this.compare);
         this.leadershipBoard = leadershipBoards;
+        // ranking
+        let rank = 1;
+        for (let i = 0; i < this.leadershipBoard.length; i++) {
+          // increase rank only if current score less than previous
+          if (i > 0 && this.leadershipBoard[i].points < this.leadershipBoard[i - 1].points) {
+            rank++;
+          }
+          this.leadershipBoard[i].rank = rank;
+        }
         this.messageService.add({severity: 'success', summary: 'Leadership board successfully updated', detail: 'Success'});
       }, error1 => {
         this.ng4LoadingSpinnerService.hide();
@@ -35,7 +44,7 @@ export class LeadershipBoardComponent implements OnInit {
     );
 
   }
-  
+
   compare( a, b ) {
     if ( a.points > b.points ) {
       return -1;
@@ -45,5 +54,5 @@ export class LeadershipBoardComponent implements OnInit {
     }
     return 0;
   }
-  
+
 }

@@ -15,7 +15,7 @@ host >>> ui-dialog-titlebar{
     width: 10%;
 }
 
-.pulse {
+/*.pulse {
     border: 2px;
     animation: pulse 2s infinite;
   }
@@ -43,5 +43,41 @@ host >>> ui-dialog-titlebar{
       -moz-box-shadow: 0  0 -10px green;
       box-shadow: 0 0  -10px green;
   }
+  }*/
+
+/*Animate border*/
+.glow {
+  position: relative;
+  background: linear-gradient(0deg, #000, #272727);
+}
+
+.glow:before, .glow:after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  background: linear-gradient(4deg, lightblue, yellow, #00ff00,#ffff00, #ff0000, #fb0094,
+  gold, yellow,#ffff00, cornsilk);
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: -1;
+  animation: steam 20s linear infinite;
+}
+
+@keyframes steam {
+  0% {
+    background-position: 0 0;
   }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.glow:after {
+  filter: blur(5px);
+}
 

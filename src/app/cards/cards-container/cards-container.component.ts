@@ -4,6 +4,7 @@ import {MatchData} from 'src/app/model/match-data';
 import {MessageService} from 'primeng/api';
 import {PredictionHistoryService} from '../../prediction-history/prediction-history.service';
 import {Ng4LoadingSpinnerModule, Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
+import enumerate = Reflect.enumerate;
 
 
 @Component({
@@ -16,7 +17,7 @@ export class CardsContainerComponent implements OnInit {
   matchData: MatchData[];
   filteredMatchData: MatchData[];
   matchIds: number[] = [];
-
+  showMathes: number[] = [];
   constructor(private predictionByUser: PredictionHistoryService,
               private matchesService: MatchesService, private messageService: MessageService,
               private ng4LoadingSpinnerService: Ng4LoadingSpinnerService) {
@@ -41,6 +42,9 @@ export class CardsContainerComponent implements OnInit {
             return (new Date(value.dateTime) > new Date());
           });
           this.matchData = this.filteredMatchData;
+          for (let i = 0; i < 6; i++) {
+            this.showMathes.push(this.filteredMatchData[i].matchId);
+          }
           this.ng4LoadingSpinnerService.hide();
         },
         () => {

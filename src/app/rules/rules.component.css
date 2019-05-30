@@ -1,3 +1,7 @@
 div{
   margin-left: 10%;
+  background: linear-gradient(0deg, yellow, whitesmoke);
+  opacity: 50%;
+  width: 70%;
+  padding: 2%;
 }

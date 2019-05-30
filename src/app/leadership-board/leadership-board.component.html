@@ -1,5 +1,5 @@
 <div class="container mt-5 text-center">
-  <p-table [value]="leadershipBoard" >
+  <p-table [value]="leadershipBoard">
     <ng-template pTemplate="header">
       <tr>
         <th>Rank</th>
@@ -9,8 +9,9 @@
     </ng-template>
     <ng-template pTemplate="body" let-leader let-rowIndex="rowIndex">
       <tr>
-        <td>{{rowIndex + 1}}</td>
-        <td>{{leader.username}}</td>
+        <td>{{leader.rank }}</td>
+        <td><i *ngIf="leader.rank === 1" class="fa fa-trophy" style="font-size:24px;color:darkgoldenrod;"></i>
+          <span style="margin-left: 20px">{{leader.username}}</span></td>
         <td>{{leader.points}}</td>
 
       </tr>

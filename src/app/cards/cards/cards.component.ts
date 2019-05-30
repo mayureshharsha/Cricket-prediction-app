@@ -19,6 +19,9 @@ export class CardsComponent implements OnInit {
   @Input()
   disabled: boolean;
 
+  @Input()
+  glow: boolean;
+
   predictionResult: PredictionData;
 
   homeTeamFlag: string;
