@@ -91,15 +91,14 @@ export class CardsComponent implements OnInit {
     this.predictionResult.tossResult = this.predictionResult.tossResult.value;
     this.matchService.savePredictionData(this.predictionResult).subscribe(
       (response: any) => {
+        this.ng4LoadingSpinnerService.hide();
         this.messageService.add({
           severity: 'success',
           summary: 'Leadership board successfully updated',
           detail: 'Success'
         });
-        this.ng4LoadingSpinnerService.hide();
-        console.log('Successfully posted Data');
-        this.router.navigateByUrl('/home');
-
+        this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() =>
+          this.router.navigate(['home']));
       }, error1 => {
         this.ng4LoadingSpinnerService.hide();
         this.messageService.add({

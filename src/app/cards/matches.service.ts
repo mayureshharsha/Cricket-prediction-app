@@ -24,7 +24,8 @@ export class MatchesService {
       predictionData,
       {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Token: document.cookie
         },
         withCredentials: true
       }
@@ -34,14 +35,22 @@ export class MatchesService {
 
   getLeadershipBoard(): Observable<LeadershipBoard[]> {
     return this.http.get<LeadershipBoard[]>(environment.hostUrl + '/v1/resultMgmt/results', {
-      withCredentials: true
+      withCredentials: true,
+      headers: {
+        Token: document.cookie
+      }
     });
 
   }
 
   getPointsOfUser(userId: number): Observable<number> {
     return this.http.get<number>(
-      environment.hostUrl + '/v1/resultMgmt/results/' + userId );
+      environment.hostUrl + '/v1/resultMgmt/results/' + userId, {
+        withCredentials: true,
+        headers: {
+          Token: document.cookie
+        }
+      } );
 
   }
 

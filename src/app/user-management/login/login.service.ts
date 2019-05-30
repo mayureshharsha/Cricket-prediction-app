@@ -17,7 +17,8 @@ export class LoginService {
       user,
       {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Token: document.cookie
         },
         withCredentials: true
       }
@@ -30,7 +31,8 @@ export class LoginService {
       {
         withCredentials: true,
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Token: document.cookie
         }
       }
     );
