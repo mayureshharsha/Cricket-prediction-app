@@ -29,6 +29,7 @@ export class PredictionHistoryComponent implements OnInit {
     this.predictionHistoryService.getPredictionHistory().subscribe(
       (predictionHistory: PredictionHistory[]) => {
         this.ng4LoadingSpinnerService.hide();
+        predictionHistory.sort(this.compare);
         this.predictionHistory = predictionHistory;
 
         this.messageService.add({
@@ -48,6 +49,16 @@ export class PredictionHistoryComponent implements OnInit {
     });
   }
 
+  compare(a, b) {
+    if (a.matchId > b.matchId) {
+      return -1;
+    }
+    if (a.matchId < b.matchId) {
+      return 1;
+    }
+    return 0;
+  }
+  
   getPredictionMatchWinner(pHistory) {
     const homeResult = pHistory.homeResult;
     const team = this.extracted(homeResult, pHistory);
