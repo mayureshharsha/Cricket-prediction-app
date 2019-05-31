@@ -12,10 +12,11 @@
     </p-header>
 
     <div class="text-center pt-3">
-      <div>Match number: {{singleMatchData.matchId}}</div>
-      <div>Date : {{humanReadadbleDate}}</div>
+      <div>Match number : {{singleMatchData.matchId}}</div>
+      <div>Date : {{humanReadableDate}}</div>
+      <i *ngIf="alert" class='fa fa-bell faa-ring animated fa-1x mr-lg-1' style="color: brown"></i>
+      <span class="ml-lg-1" [id]="singleMatchData.matchId"></span>
       <div>Venue : {{singleMatchData.venue}}</div>
-
     </div>
     <p-footer>
       <div class="text-center">

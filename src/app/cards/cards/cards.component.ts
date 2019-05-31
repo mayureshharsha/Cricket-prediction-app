@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+/* tslint:disable:object-literal-key-quotes */
+import {AfterViewChecked, Component, Input, OnInit} from '@angular/core';
 import {MatchData} from 'src/app/model/match-data';
 import {PredictionData} from '../../model/prediction-data';
 import {MatchesService} from '../matches.service';
@@ -11,7 +12,7 @@ import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.css']
 })
-export class CardsComponent implements OnInit {
+export class CardsComponent implements OnInit, AfterViewChecked {
 
   @Input()
   singleMatchData: MatchData;
@@ -31,12 +32,15 @@ export class CardsComponent implements OnInit {
 
   awayTeamFlag: string;
 
-  humanReadadbleDate: string;
+  humanReadableDate: string;
   display: boolean;
   players: any[];
   mom: any;
   teams: SelectItem[];
-
+  humanReadableTime: string;
+  private date: Date;
+  private clock: any = null;
+  alert = false;
   constructor(private matchService: MatchesService, private router: Router, private messageService: MessageService,
               private ng4LoadingSpinnerService: Ng4LoadingSpinnerService) {
 
@@ -77,12 +81,59 @@ export class CardsComponent implements OnInit {
 
     this.homeTeamFlag = '/assets/' + this.singleMatchData.homeTeam.name + '.png';
     this.awayTeamFlag = '/assets/' + this.singleMatchData.awayTeam.name + '.png';
-    const date = new Date(this.singleMatchData.dateTime);
-    this.humanReadadbleDate = date.toLocaleDateString();
+    this.date = new Date(this.singleMatchData.dateTime);
+    this.humanReadableDate = this.date.toLocaleDateString();
+    this.humanReadableTime = this.date.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true});
+    this.alert = (this.humanReadableDate === (new Date()).toLocaleDateString() && !this.disabled) ? true : false;
+  }
+
+  ngAfterViewChecked() {
+    if (this.clock == null) {
+      this.clock = document.getElementById(this.singleMatchData.matchId.toString());
+      if (this.humanReadableDate === (new Date()).toLocaleDateString() && !this.disabled) {
+        this.alert = true;
+        const endtime = this.date.getTime() - 3600 * 1000;
+        this.initializeClock(endtime);
+      } else {
+        this.alert = false;
+        this.clock.innerHTML = 'Starts at : ' + this.humanReadableTime;
+      }
+    }
+
   }
 
   predict() {
     this.display = true;
+  }
+
+  private initializeClock(endtime) {
+    const self = this;
+    const timeinterval = setInterval(() => {
+      const t = self.getTimeRemaining(endtime);
+      self.clock.innerHTML = /*'days: ' + t.days + '<br>' +*/
+        'Prediction locks in <b>' + t.hours + ' h : ' +
+        t.minutes + ' m : ' +
+        t.seconds + ' s</b>';
+      if (t.total <= 0) {
+        clearInterval(timeinterval);
+      }
+    }, 1000);
+  }
+
+
+  getTimeRemaining(endtime) {
+    const t = endtime - Date.parse((new Date()).toString());
+    const seconds = Math.floor((t / 1000) % 60);
+    const minutes = Math.floor((t / 1000 / 60) % 60);
+    const hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+    const days = Math.floor(t / (1000 * 60 * 60 * 24));
+    return {
+      'total': t,
+      // 'days': days,
+      'hours': hours,
+      'minutes': minutes,
+      'seconds': seconds
+    };
   }
 
   saveResult() {
