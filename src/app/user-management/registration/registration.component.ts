@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserRegistration} from '../../model/user-registration';
 import {Router} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
 import {LoginService} from '../login/login.service';
 import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 
@@ -29,6 +28,12 @@ this.loginService.register(this.userRegistration).subscribe(
   value => {
     this.ng4LoadingSpinnerService.hide();
     this.router.navigateByUrl('/login');
+  }, error1 => {
+    if (error1.status === 403) {
+      alert('Sorry ! the username is already taken');
+    } else {
+      alert('Something went wrong');
+    }
   }
 );
   }
