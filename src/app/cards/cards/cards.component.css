@@ -1,52 +1,67 @@
-host >>> ui-dialog-titlebar{
+host >>> ui-dialog-titlebar {
   background-color: red;
 }
 
 
+.customText {
 
-
-
-.customText{
-
-    font-size: 150%;
-    font-weight: 200
+  font-size: 150%;
+  font-weight: 200
 }
+
 :host >>> .ui-card-header img {
-    width: 10%;
+  width: 10%;
 }
 
-/*.pulse {
-    border: 2px;
-    animation: pulse 2s infinite;
-  }
-  
-  @keyframes pulse {
-    0% {
-      -moz-box-shadow: 0 0 -10px  green;
-      box-shadow: 0 0 -10px  green;
-    }
-    40% {
-        -moz-box-shadow: 0 0 20px green;
-        box-shadow: 0 0 20px green;
-    }
+.pulse {
+  border: 2px;
+  animation: pulse 20s infinite;
+}
 
-    60% {
-        -moz-box-shadow: 0 0 20px green;
-        box-shadow: 0 0 20px green;
-    }
-    80% {
-        -moz-box-shadow: 0 0 -10px green;
-        box-shadow: 0 0 -10px green;
-    }
-
-    100% {
-      -moz-box-shadow: 0  0 -10px green;
-      box-shadow: 0 0  -10px green;
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 -10px violet;
+    box-shadow: 0 0 -10px violet;
   }
-  }*/
+
+  20% {
+    -moz-box-shadow: 0 0 -10px blueviolet;
+    box-shadow: 0 0 20px blueviolet;
+  }
+
+  40% {
+    -moz-box-shadow: 0 0 20px deepskyblue;
+    box-shadow: 0 0 20px deepskyblue;
+  }
+
+  50% {
+    -moz-box-shadow: 0 0 20px green;
+    box-shadow: 0 0 20px green;
+  }
+
+  60% {
+    -moz-box-shadow: 0 0 20px orangered;
+    box-shadow: 0 0 20px orangered;
+  }
+
+  70% {
+    -moz-box-shadow: 0 0 20px darkgoldenrod;
+    box-shadow: 0 0 20px darkgoldenrod;
+  }
+
+  80% {
+    -moz-box-shadow: 0 0 20px saddlebrown;
+    box-shadow: 0 0 20px saddlebrown;
+  }
+
+  100% {
+    -moz-box-shadow: 0 0 -10px saddlebrown;
+    box-shadow: 0 0 -10px saddlebrown;
+  }
+}
 
 /*Animate border*/
-.glow {
+/*.glow {
   position: relative;
   background: linear-gradient(0deg, #000, #272727);
 }
@@ -56,8 +71,8 @@ host >>> ui-dialog-titlebar{
   position: absolute;
   left: -2px;
   top: -2px;
-  background: linear-gradient(4deg, lightblue, yellow, #00ff00,#ffff00, #ff0000, #fb0094,
-  gold, yellow,#ffff00, cornsilk);
+  background: linear-gradient(4deg, lightblue, yellow, #00ff00, #ffff00, #ff0000, #fb0094,
+  gold, yellow, #ffff00, cornsilk);
   background-size: 400%;
   width: calc(100% + 4px);
   height: calc(100% + 4px);
@@ -79,5 +94,5 @@ host >>> ui-dialog-titlebar{
 
 .glow:after {
   filter: blur(5px);
-}
+}*/
 
