@@ -153,8 +153,10 @@ export class CardsComponent implements OnInit, AfterViewChecked {
           summary: 'Leadership board successfully updated',
           detail: 'Success'
         });
-        this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() =>
-          this.router.navigate(['home']));
+        // not working
+        /*this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() =>
+          this.router.navigate(['home']));*/
+        location.reload();
       }, error1 => {
         this.ng4LoadingSpinnerService.hide();
         this.messageService.add({
