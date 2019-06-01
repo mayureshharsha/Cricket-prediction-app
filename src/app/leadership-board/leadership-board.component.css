@@ -4,15 +4,34 @@ i {
   text-align: left;
 }
 
-body {
-  opacity: 0.7;
+.leader-table {
+  opacity: 0.9;
 }
 
 .leader-table td {
   font-weight: bold;
+  opacity: 1;
 }
 
 .leader-table th {
   background-color: black;
   color: white;
+  opacity: 1;
+}
+
+
+.my-result {
+  background: linear-gradient(-45deg, #fff087, #eccf02, #fff087) !important;
+  background-size: 50% 100%;
+  animation: linear-gradient 10s linear infinite !important;
+}
+
+@keyframes linear-gradient {
+  0% {
+    background-position: 0% 50%
+  }
+
+  100% {
+    background-position: 400% 400%
+  }
 }

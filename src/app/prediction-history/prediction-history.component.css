@@ -1,0 +1,14 @@
+.history-table {
+  opacity: 0.9;
+}
+
+.history-table td {
+  font-weight: bold;
+  opacity: 1;
+}
+
+.history-table th {
+  background-color: black;
+  color: white;
+  opacity: 1;
+}

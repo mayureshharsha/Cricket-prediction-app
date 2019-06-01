@@ -25,8 +25,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loginService.login(this.user).subscribe(
-      (response) => {
+      (response: any) => {
         this.deleteAllCookies();
+        response.username = this.user.username;
         document.cookie = JSON.stringify(response);
         this.router.navigateByUrl('/home');
       },

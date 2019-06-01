@@ -1,1 +1,4 @@
-
+.card-container {
+  background-image: url(../../../assets/bg/WC.jpg);
+  background-size: contain;
+}

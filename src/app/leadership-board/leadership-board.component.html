@@ -1,4 +1,4 @@
-<div class="container mt-5 text-center leader-table">
+<div class="container mt-5 text-center table-responsive leader-table">
   <p-table [value]="leadershipBoard">
     <ng-template pTemplate="header">
       <tr>
@@ -8,7 +8,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-leader let-rowIndex="rowIndex">
-      <tr>
+      <tr [class.my-result]="leader.username === username">
         <td>{{leader.rank }}</td>
         <td><i *ngIf="leader.rank === 1" class="fa fa-trophy ml-lg-2"></i>
           <span class="ml-lg-2">{{leader.username}}</span></td>

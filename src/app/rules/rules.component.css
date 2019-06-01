@@ -1,7 +1,8 @@
-div{
+#rule {
   margin-left: 10%;
-  background: linear-gradient(0deg, yellow, whitesmoke);
-  opacity: 50%;
-  width: 70%;
+  background: linear-gradient(0deg, lightblue, whitesmoke);
+  opacity: 0.9;
+  width: 80%;
   padding: 2%;
+  font-weight: bold;
 }

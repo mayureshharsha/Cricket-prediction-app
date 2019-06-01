@@ -117,6 +117,9 @@ export class CardsComponent implements OnInit, AfterViewChecked {
           t.seconds + ' s</b>';
       } else {
         self.clock.innerHTML = 'Prediction locked';
+        this.disabled = true;
+        const icon = document.getElementById('icon');
+        icon.setAttribute('class', 'pi pi-lock');
         clearInterval(timeinterval);
       }
     }, 1000);
@@ -150,12 +153,11 @@ export class CardsComponent implements OnInit, AfterViewChecked {
         this.ng4LoadingSpinnerService.hide();
         this.messageService.add({
           severity: 'success',
-          summary: 'Leadership board successfully updated',
+          summary: 'Prediction added successfully',
           detail: 'Success'
         });
         // not working
-        /*this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() =>
-          this.router.navigate(['home']));*/
+        // this.router.navigateByUrl('/home');
         location.reload();
       }, error1 => {
         this.ng4LoadingSpinnerService.hide();

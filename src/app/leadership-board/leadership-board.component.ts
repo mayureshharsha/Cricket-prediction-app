@@ -13,6 +13,7 @@ export class LeadershipBoardComponent implements OnInit {
 
 
   leadershipBoard: LeadershipBoard[];
+  username: string;
 
   constructor(private matchesService: MatchesService,
               private messageService: MessageService,
@@ -20,6 +21,7 @@ export class LeadershipBoardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.username = JSON.parse(document.cookie).username;
     this.ng4LoadingSpinnerService.show();
     this.matchesService.getLeadershipBoard().subscribe(
       (leadershipBoards: LeadershipBoard[]) => {
