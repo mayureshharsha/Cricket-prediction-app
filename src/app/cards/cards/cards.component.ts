@@ -110,11 +110,13 @@ export class CardsComponent implements OnInit, AfterViewChecked {
     const self = this;
     const timeinterval = setInterval(() => {
       const t = self.getTimeRemaining(endtime);
-      self.clock.innerHTML = /*'days: ' + t.days + '<br>' +*/
-        'Prediction locks in <b>' + t.hours + ' h : ' +
-        t.minutes + ' m : ' +
-        t.seconds + ' s</b>';
-      if (t.total <= 0) {
+      if (t.total > 0) {
+        self.clock.innerHTML = /*'days: ' + t.days + '<br>' +*/
+          'Prediction locks in <b>' + t.hours + ' h : ' +
+          t.minutes + ' m : ' +
+          t.seconds + ' s</b>';
+      } else {
+        self.clock.innerHTML = 'Prediction locked';
         clearInterval(timeinterval);
       }
     }, 1000);
