@@ -5,7 +5,7 @@ i {
 }
 
 .leader-table {
-  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .leader-table td {
@@ -34,4 +34,9 @@ i {
   100% {
     background-position: 400% 400%
   }
+}
+
+i{
+  float: left;
+  left: 10%;
 }

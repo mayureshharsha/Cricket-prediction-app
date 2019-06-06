@@ -9,7 +9,16 @@
     </ng-template>
     <ng-template pTemplate="body" let-leader let-rowIndex="rowIndex">
       <tr [class.my-result]="leader.username === username">
-        <td>{{leader.rank }}</td>
+        <td>
+          <span>
+          <i *ngIf="(leader.currentRank - leader.previousRank) < 0" class="pi pi-arrow-circle-up"
+             style="color: green">{{leader.previousRank - leader.currentRank}}</i>
+          <i *ngIf="(leader.currentRank - leader.previousRank) > 0" class="pi pi-arrow-circle-down"
+             style="color: red">{{leader.currentRank - leader.previousRank}}</i>
+          <i *ngIf="(leader.currentRank - leader.previousRank) === 0" class="fa fa-arrows-h" style="color: blue">0</i>
+          </span>
+          <span>{{leader.rank }}</span>
+        </td>
         <td><i *ngIf="leader.rank === 1" class="fa fa-trophy ml-lg-2"></i>
           <span class="ml-lg-2">{{leader.username}}</span></td>
         <td>{{leader.points}}</td>

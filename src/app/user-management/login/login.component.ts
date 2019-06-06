@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../model/user';
 import {Router} from '@angular/router';
 import {LoginService} from './login.service';
+import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
   user: User;
   msgs: any;
 
-  constructor(private router: Router, private loginService: LoginService) {
+  constructor(private router: Router, private loginService: LoginService,
+              private ng4LoadingSpinnerService: Ng4LoadingSpinnerService) {
     this.user = {} as User;
 
   }
@@ -24,9 +26,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.ng4LoadingSpinnerService.show()
     this.loginService.login(this.user).subscribe(
       (response: any) => {
-        this.deleteAllCookies();
+        this.ng4LoadingSpinnerService.hide();
+        // this.deleteAllCookies();
+        document.cookie = '';
         response.username = this.user.username;
         document.cookie = JSON.stringify(response);
         this.router.navigateByUrl('/home');

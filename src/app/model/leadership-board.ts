@@ -3,7 +3,8 @@ export interface LeadershipBoard {
 
   username: string;
   points: number;
-
+  currentRank: number;
+  previousRank: number;
 }
 
 

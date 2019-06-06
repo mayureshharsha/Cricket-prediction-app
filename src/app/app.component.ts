@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MenuItem} from 'primeng/api';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   }
 
   hideMenu(): boolean {
-    return (this.router.url != '/login' && this.router.url != '/register')
+    return (this.router.url != '/login' && this.router.url != '/register');
   }
 
   ngOnInit() {
@@ -54,4 +54,10 @@ export class AppComponent implements OnInit {
     ];
   }
 
+  get username() {
+    if (document.cookie !== '') {
+      return JSON.parse(document.cookie).username;
+    }
+    return '';
+  }
 }

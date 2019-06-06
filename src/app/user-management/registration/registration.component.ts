@@ -26,29 +26,29 @@ export class RegistrationComponent implements OnInit {
   }
 
   register() {
-this.ng4LoadingSpinnerService.show();
-this.loginService.register(this.userRegistration).subscribe(
-  value => {
-    this.ng4LoadingSpinnerService.hide();
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Registered successfully',
-      detail: 'Success'
-    });
-    this.router.navigateByUrl('/login');
-  }, error1 => {
-    this.ng4LoadingSpinnerService.hide();
-    let msg = '';
-    if (error1.status === 403) {
-      msg = 'Sorry ! the username is already taken';
-    } else {
-      msg = 'Something went wrong';
-    }
-    this.messageService.add({
-      severity: 'error',
-      summary: msg
-    });
-  }
-);
+    this.ng4LoadingSpinnerService.show();
+    this.loginService.register(this.userRegistration).subscribe(
+      value => {
+        this.ng4LoadingSpinnerService.hide();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Registered successfully',
+          detail: 'Success'
+        });
+        this.router.navigateByUrl('/login');
+      }, error1 => {
+        this.ng4LoadingSpinnerService.hide();
+        let msg = '';
+        if (error1.status === 403) {
+          msg = 'Sorry ! the username is already taken';
+        } else {
+          msg = 'Something went wrong';
+        }
+        this.messageService.add({
+          severity: 'error',
+          summary: msg
+        });
+      }
+    );
   }
 }
