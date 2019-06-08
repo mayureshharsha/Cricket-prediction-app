@@ -1,6 +1,7 @@
 <ng4-loading-spinner></ng4-loading-spinner>
-<div class="mt-2 text-lg-right" *ngIf="hideMenu()">
+<div class="mt-2 text-lg-right" [class.hide]=!hideMenu()>
   <p-menubar [model]="items">
+    <i class="pi pi-user mt-2"></i>{{username}}
   </p-menubar>
 
 </div>

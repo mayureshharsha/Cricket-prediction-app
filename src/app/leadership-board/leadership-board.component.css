@@ -1,11 +1,16 @@
-i {
+td i {
   font-size: 19px;
   color: darkgoldenrod;
   text-align: left;
 }
 
+.arrow {
+  color: white;
+}
+
 .leader-table {
-  opacity: 0.9;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .leader-table td {
@@ -17,6 +22,7 @@ i {
   background-color: black;
   color: white;
   opacity: 1;
+  font-weight: bold;
 }
 
 
@@ -34,4 +40,9 @@ i {
   100% {
     background-position: 400% 400%
   }
+}
+
+i{
+  float: left;
+  left: 10%;
 }
