@@ -15,7 +15,7 @@
              style="color: green">{{leader.previousRank - leader.currentRank}}</i>
           <i *ngIf="(leader.currentRank - leader.previousRank) > 0" class="pi pi-arrow-circle-down"
              style="color: red">{{leader.currentRank - leader.previousRank}}</i>
-          <i *ngIf="(leader.currentRank - leader.previousRank) === 0" class="fa fa-arrows-h" style="color: blue">0</i>
+          <i *ngIf="(leader.currentRank - leader.previousRank) === 0" class="fa fa-arrows-h" style="color: dimgray">0</i>
           </span>
           <span>{{leader.rank }}</span>
         </td>

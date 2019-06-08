@@ -1,7 +1,6 @@
 td i {
   font-size: 19px;
   color: darkgoldenrod;
-  text-align: left;
 }
 
 .arrow {
@@ -21,7 +20,7 @@ td i {
 .leader-table th {
   background-color: black;
   color: white;
-  opacity: 1;
+  opacity: 0.9;
   font-weight: bold;
 }
 
