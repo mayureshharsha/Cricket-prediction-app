@@ -1,6 +1,7 @@
 [
   {
-    "Afghanistan": [
+    "team": "Afghanistan",
+    "players": [
       "GULBADIN NAIB",
       "ASGHAR AFGHAN",
       "DAWLAT ZADRAN",
@@ -17,7 +18,8 @@
     ]
   },
   {
-    "Australia": [
+    "team": "Australia",
+    "players": [
       "AARON FINCH",
       "JASON BEHRENDORFF",
       "ALEX CAREY",
@@ -36,7 +38,8 @@
     ]
   },
   {
-    "India": [
+    "team": "India",
+    "players": [
       "VIRAT KOHLI",
       "ROHIT SHARMA",
       "JASPRIT BUMRAH",
@@ -55,7 +58,8 @@
     ]
   },
   {
-    "Pakistan": [
+    "team": "Pakistan",
+    "players": [
       "SARFARAZ AHMED",
       "ASIF ALI",
       "BABAR AZAM",
@@ -65,22 +69,17 @@
       "IMAD WASIM",
       "IMAM-UL-HAQ",
       "MOHAMMAD AMIR",
-      "MOHAMMAD",
-      "HAFEEZ",
-      "MOHAMMAD",
-      "HASNAIN",
-      "SHADAB",
-      "KHAN",
-      "SHAHEEN",
-      "AFRIDI",
-      "SHOAIB",
-      "MALIK",
-      "WAHAB",
-      "RIAZ"
+      "MOHAMMAD HAFEEZ",
+      "MOHAMMAD HASNAIN",
+      "SHADAB KHAN",
+      "SHAHEEN AFRIDI",
+      "SHOAIB MALIK",
+      "WAHAB RIAZ"
     ]
   },
   {
-    "Sri Lanka": [
+    "team": "Sri Lanka",
+    "players": [
       "DIMUTH KARUNARATNE",
       "DHANANJAYA DE SILVA",
       "NUWAN PRADEEP",
@@ -99,7 +98,8 @@
     ]
   },
   {
-    "WestIndies": [
+    "team": "West Indies",
+    "players": [
       "JASON HOLDER",
       "FABIAN ALLEN",
       "CARLOS BRATHWAITE",
@@ -112,13 +112,67 @@
       "EVIN LEWIS",
       "ASHLEY NURSE",
       "NICHOLAS POORAN",
-      "SHAHEEN",
       "KEMAR ROACH",
       "ANDRE RUSSELL",
-      "OSHANE",
-      "THOMAS"
+      "OSHANE THOMAS"
+    ]
+  },
+  {
+    "team": "England",
+    "players": [
+      "MOEEN ALI",
+      "JOFRA ARCHER",
+      "JONNY BAIRSTOW",
+      "JOS BUTTLER",
+      "TOM CURRAN",
+      "LIAM DAWSON",
+      "LIAM PLUNKETT",
+      "ADIL RASHID",
+      "JOE ROOT",
+      "JASON ROY",
+      "BEN STOKES",
+      "JAMES VINCE",
+      "CHRIS WOAKES",
+      "MARK WOOD"
+    ]
+  },
+  {
+    "team": "South Africa",
+    "players": [
+      "HASHIM AMLA",
+      "QUINTON DE KOCK",
+      "JP DUMINY",
+      "BEURAN HENDRICKS",
+      "IMRAN TAHIR",
+      "AIDEN MARKRAM",
+      "DAVID MILLER",
+      "CHRIS MORRIS",
+      "LUNGI NGIDI",
+      "ANDILE PHEHLUKWAYO",
+      "DWAINE PRETORIUS",
+      "KAGISO RABADA",
+      "TABRAIZ SHAMSI",
+      "RASSIE VAN DER DUSSEN"
+    ]
+  },
+  {
+    "team": "Bangladesh",
+    "players": [
+      "ABU JAYED",
+      "LITON DAS",
+      "MAHMUDULLAH",
+      "MEHIDY HASAN",
+      "MOHAMMAD MITHUN",
+      "MOHAMMAD SAIFUDDIN",
+      "MOSADDEK HOSSAIN",
+      "MUSHFIQUR RAHIM",
+      "MUSTAFIZUR RAHMAN",
+      "RUBEL HOSSAIN",
+      "SABBIR RAHMAN",
+      "SHAKIB AL HASAN",
+      "SOUMYA SARKAR",
+      "TAMIM IQBAL"
     ]
   }
 ]
-
 

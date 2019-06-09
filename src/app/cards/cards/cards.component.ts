@@ -6,6 +6,7 @@ import {MatchesService} from '../matches.service';
 import {MessageService, SelectItem} from 'primeng/api';
 import {Router} from '@angular/router';
 import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
+import {AllPlayers} from '../../model/all-players';
 
 @Component({
   selector: 'app-cards',
@@ -16,6 +17,9 @@ export class CardsComponent implements OnInit, AfterViewChecked {
 
   @Input()
   singleMatchData: MatchData;
+
+  @Input()
+  allPlayers: AllPlayers[];
 
   @Input()
   disabled: boolean;
@@ -31,32 +35,21 @@ export class CardsComponent implements OnInit, AfterViewChecked {
   results: any[];
 
   awayTeamFlag: string;
+  playing22: any[] = [];
 
   humanReadableDate: string;
   display: boolean;
-  players: any[];
   mom: any;
   teams: SelectItem[];
   humanReadableTime: string;
   private date: Date;
   private clock: any = null;
   alert = false;
+
   constructor(private matchService: MatchesService, private router: Router, private messageService: MessageService,
               private ng4LoadingSpinnerService: Ng4LoadingSpinnerService) {
 
     this.predictionResult = {} as PredictionData;
-
-    this.players = [
-      {name: 'Virat Kohli', code: 'NY'},
-      {name: 'M S Dhoni', code: 'RM'},
-      {name: 'Rohit Sharma', code: 'LDN'},
-      {name: 'hardik Pandya', code: 'IST'},
-      {name: 'Bhuvnesh Kumar', code: 'PRS'},
-      {name: 'Bhuvnesh Kumar', code: 'PRS'},
-      {name: 'Bhuvnesh Kumar', code: 'PRS'},
-      {name: 'Bhuvnesh Kumar', code: 'PRS'},
-      {name: 'Bhuvnesh Kumar', code: 'PRS'}
-    ];
 
 
     this.results = [
@@ -66,6 +59,13 @@ export class CardsComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
+    this.allPlayers.filter(value =>
+
+      (value.team === this.singleMatchData.homeTeam.name) || (value.team === this.singleMatchData.awayTeam.name)
+    ).forEach(value1 => {
+      this.playing22 = this.playing22.concat(value1.players);
+    });
+
     this.teams = [
       {
         label: 'Select', value: null,
@@ -144,10 +144,11 @@ export class CardsComponent implements OnInit, AfterViewChecked {
   saveResult() {
     this.ng4LoadingSpinnerService.show();
     this.display = false;
-
+    console.log(this.predictionResult);
     this.predictionResult.matchId = this.singleMatchData.matchId;
     this.predictionResult.userId = JSON.parse(document.cookie).userId;
     this.predictionResult.tossResult = this.predictionResult.tossResult.value;
+
     this.matchService.savePredictionData(this.predictionResult).subscribe(
       (response: any) => {
         this.ng4LoadingSpinnerService.hide();

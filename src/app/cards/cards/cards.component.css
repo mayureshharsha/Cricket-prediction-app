@@ -232,3 +232,9 @@ host >>> ui-dialog-titlebar {
   transform-origin-y: 0px;
   transform-origin-z: initial;
 }
+
+
+.playing22{
+  width: 174px;
+  height: 32px;
+}

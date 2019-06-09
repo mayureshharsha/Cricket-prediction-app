@@ -4,6 +4,7 @@ import {PredictionData} from '../model/prediction-data';
 import {Observable} from 'rxjs';
 import {LeadershipBoard} from '../model/leadership-board';
 import {environment} from '../../environments/environment';
+import {AllPlayers} from '../model/all-players';
 
 @Injectable({
   providedIn: 'root'
@@ -50,8 +51,15 @@ export class MatchesService {
         headers: {
           Token: document.cookie
         }
-      } );
+      });
 
   }
 
+  getAllPlayers(): Observable<AllPlayers[]> {
+
+    return this.http.get<AllPlayers[]>(
+      environment.allPlayers
+    );
+
+  }
 }
