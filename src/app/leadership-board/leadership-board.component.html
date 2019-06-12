@@ -12,10 +12,11 @@
         <td>
           <span>
           <i *ngIf="(leader.currentRank - leader.previousRank) < 0" class="pi pi-arrow-circle-up"
-             style="color: green">{{leader.previousRank - leader.currentRank}}</i>
+             style="color: green"><span style="font-size: small">{{leader.previousRank - leader.currentRank}}</span></i>
           <i *ngIf="(leader.currentRank - leader.previousRank) > 0" class="pi pi-arrow-circle-down"
-             style="color: red">{{leader.currentRank - leader.previousRank}}</i>
-          <i *ngIf="(leader.currentRank - leader.previousRank) === 0" class="fa fa-arrows-h" style="color: dimgray">0</i>
+             style="color: red"><span style="font-size: small">{{leader.currentRank - leader.previousRank}}</span></i>
+          <i *ngIf="(leader.currentRank - leader.previousRank) === 0" class="fa fa-arrows-h"
+             style="color: dimgray"><span style="font-size: small">0</span></i>
           </span>
           <span>{{leader.rank }}</span>
         </td>

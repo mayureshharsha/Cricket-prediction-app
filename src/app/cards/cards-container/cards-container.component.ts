@@ -42,7 +42,7 @@ export class CardsContainerComponent implements OnInit {
             return (new Date(value.dateTime) > new Date());
           });
           this.matchData = this.filteredMatchData;
-          for (let i = 0; i < 6; i++) {
+          for (let i = 0; i < 3; i++) {
             this.showMathes.push(this.filteredMatchData[i].matchId);
           }
           this.ng4LoadingSpinnerService.hide();

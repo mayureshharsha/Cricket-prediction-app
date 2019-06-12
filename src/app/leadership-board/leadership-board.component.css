@@ -10,6 +10,7 @@ td i {
 .leader-table {
   padding: 0;
   background: rgba(255, 255, 255, 0.7);
+  opacity: 0.9;
 }
 
 .leader-table td {
@@ -20,9 +21,10 @@ td i {
 .leader-table th {
   background-color: black;
   color: white;
-  opacity: 0.9;
   font-weight: bold;
+  opacity: 1;
 }
+
 
 
 .my-result {
