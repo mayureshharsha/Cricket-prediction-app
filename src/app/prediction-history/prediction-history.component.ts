@@ -58,7 +58,7 @@ export class PredictionHistoryComponent implements OnInit {
     }
     return 0;
   }
-  
+
   getPredictionMatchWinner(pHistory) {
     const homeResult = pHistory.homeResult;
     const team = this.extracted(homeResult, pHistory);
@@ -120,7 +120,9 @@ export class PredictionHistoryComponent implements OnInit {
     } else if (pHistory.homeResult !== pHistory.match.homeResult) {
       sum -= 50;
     }
-    if (pHistory.tossResult === null) {
+    if (pHistory.match.tossResult === null) {
+      sum += 0;
+    } else if (pHistory.tossResult === null) {
       sum -= 50;
     } else if (pHistory.tossResult !== pHistory.match.tossResult) {
       sum -= 25;
