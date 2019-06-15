@@ -66,6 +66,18 @@ export class CardsComponent implements OnInit, AfterViewChecked {
       this.playing22 = this.playing22.concat(value1.players);
     });
 
+    this.playing22.forEach((player, index) => {
+      const name = player;
+      player = {};
+      player.label = name;
+      player.value = name;
+      this.playing22[index] = player;
+    });
+
+    this.playing22.splice(0, 0, {
+      label: 'Select', value: null,
+    });
+
     this.teams = [
       {
         label: 'Select', value: null,
