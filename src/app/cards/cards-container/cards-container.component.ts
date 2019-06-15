@@ -3,8 +3,8 @@ import {MatchesService} from 'src/app/cards/matches.service';
 import {MatchData} from 'src/app/model/match-data';
 import {MessageService} from 'primeng/api';
 import {PredictionHistoryService} from '../../prediction-history/prediction-history.service';
-import {Ng4LoadingSpinnerModule, Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
-import enumerate = Reflect.enumerate;
+import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
+import {AllPlayers} from '../../model/all-players';
 
 
 @Component({
@@ -16,8 +16,10 @@ export class CardsContainerComponent implements OnInit {
 
   matchData: MatchData[];
   filteredMatchData: MatchData[];
+  allPlayers: AllPlayers[];
   matchIds: number[] = [];
   showMathes: number[] = [];
+
   constructor(private predictionByUser: PredictionHistoryService,
               private matchesService: MatchesService, private messageService: MessageService,
               private ng4LoadingSpinnerService: Ng4LoadingSpinnerService) {
@@ -26,6 +28,19 @@ export class CardsContainerComponent implements OnInit {
 
   ngOnInit() {
     this.ng4LoadingSpinnerService.show();
+
+
+    this.matchesService.getAllPlayers().subscribe(
+      value => {
+        this.allPlayers = value;
+      },
+      error1 => {
+        this.messageService.add({severity: 'error', summary: 'SomeThing went wrong', detail: 'Please try again'});
+
+      }
+    );
+
+
     this.predictionByUser.getPredictionHistory()
       .subscribe(
         (data: MatchData[]) => {
@@ -34,7 +49,6 @@ export class CardsContainerComponent implements OnInit {
           });
         }
       );
-
     this.matchesService.getAllMatchData()
       .subscribe((data: MatchData[]) => {
 
