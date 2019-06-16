@@ -7,6 +7,8 @@ import {environment} from '../../environments/environment';
 })
 export class PredictionHistoryService {
 
+  showMsg = true;
+
   constructor(private http: HttpClient) { }
 
   getPredictionHistory() {

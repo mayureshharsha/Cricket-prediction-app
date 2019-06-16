@@ -59,7 +59,7 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" *ngIf="singleMatchData.matchId > 25">
         <span class="mr-3 pr-1">Man of the match</span>
         <!--<select class="playing22 ng-tns-c7-2 ui-dropdown ui-widget ui-state-default ui-corner-all ui-helper-clearfix" [(ngModel)]="predictionResult.momResult" [ngModelOptions]="{standalone: true}">
           <option *ngFor="let player of playing22" name="players"> {{player}}</option>

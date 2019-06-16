@@ -28,32 +28,40 @@
           <div class="ui-g ui-fluid text-justify" style="font-size:16px;padding:20px">
             <div class="ui-g-12 ui-md-3">
               <img style="width: 100%"
-                src="assets/{{getActualMatchWinner(pHistory)!== '--' ?
+                   src="assets/{{getActualMatchWinner(pHistory)!== '--' ?
                 getActualMatchWinner(pHistory): 'TBC Finalist'}}.png">
             </div>
             <div class="ui-g-12 ui-md-9">
               <div class="ui-g">
                 <div class="ui-g-12">
-                  <i>Match Number:</i> {{pHistory.matchId}}
+                  <i>Match Number:</i> &nbsp;{{pHistory.matchId}}
                 </div>
                 <div class="ui-g-12">
-                  <i>Home Team:</i> {{pHistory.match.homeTeam.name}} | <i>Away
-                  Team:</i> {{pHistory.match.awayTeam.name}}
+                  <i>{{pHistory.match.homeTeam.name}} vs {{pHistory.match.awayTeam.name}}</i>
                 </div>
                 <div class="ui-g-12">
-                  <i>Winner Prediction:</i> {{getPredictionMatchWinner(pHistory)}} | <i>Actual
-                  Result:</i> {{getActualMatchWinner(pHistory)}}
+                  <table id="inner-table" class="table-responsive">
+                    <tr>
+                      <td><i>Winner Prediction</i></td><td> {{getPredictionMatchWinner(pHistory)}}</td>
+                      <td><i>Actual Result</i></td><td> {{getActualMatchWinner(pHistory)}}</td>
+                      <!--<span *ngIf="pHistory.homeResult == pHistory.match.homeResult" style="color: green">+100</span>
+                      <span *ngIf="pHistory.match.homeResult == null" style="color: darkgrey">0</span>
+                      <span *ngIf="pHistory.match.homeResult != null && pHistory.homeResult == null" style="color: darkgrey">-100</span>
+                      <span else style="color: red">-50</span>-->
+                    </tr>
+                    <tr>
+                      <td><i>Toss Prediction</i></td><td> {{getPredictionTossWinner(pHistory)}}</td>
+                      <td><i>Actual Toss Result</i></td><td> {{getActualTossWinner(pHistory)}}</td>
+                    </tr>
+                    <tr>
+                      <td><i>Man of the Match Prediction</i></td><td> {{pHistory.momResult ? pHistory.momResult : '--'}}</td>
+                      <td><i>Actual Man of the Match
+                        Result</i></td><td> {{pHistory.match.momResult ? pHistory.match.momResult : '--'}}</td>
+                    </tr>
+                  </table>
                 </div>
                 <div class="ui-g-12">
-                  <i>Toss Prediction:</i> {{getPredictionTossWinner(pHistory)}} | <i>Actual Toss
-                  Result:</i> {{getActualTossWinner(pHistory)}}
-                </div>
-                <div class="ui-g-12">
-                  <i>Man of the Match Prediction:</i> {{pHistory.momResult ? pHistory.momResult : '--'}} | <i>Actual Man
-                  of the Match Result:</i> {{pHistory.match.momResult ? pHistory.match.momResult : '--'}}
-                </div>
-                <div class="ui-g-12">
-                  <i>Points:</i> {{calculate(pHistory)}}
+                  <i>Points:</i> &nbsp;&nbsp;{{calculate(pHistory)}}
                 </div>
               </div>
             </div>

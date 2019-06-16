@@ -151,6 +151,14 @@ export class PredictionHistoryComponent implements OnInit {
     if (pHistory.tossResult === pHistory.match.tossResult) {
       sum += 50;
     }
+
+    if (pHistory.match.momResult !== null && pHistory.momResult === pHistory.match.momResult) {
+      sum += 200;
+    }
+
+    if (sum === 350) {
+      sum += 250;
+    }
     return sum;
   }
 }

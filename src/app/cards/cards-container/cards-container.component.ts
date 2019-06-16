@@ -5,6 +5,7 @@ import {MessageService} from 'primeng/api';
 import {PredictionHistoryService} from '../../prediction-history/prediction-history.service';
 import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 import {AllPlayers} from '../../model/all-players';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -27,6 +28,17 @@ export class CardsContainerComponent implements OnInit {
 
 
   ngOnInit() {
+    if (this.predictionByUser.showMsg && (new Date()) < (new Date('2019-06-20T09:30:00.000Z'))) {
+      Swal.fire({
+        title: '<i class="fa fa-bullhorn"></i> &nbsp;Update',
+        html: '<b>Hey Cricket lovers! From match no. 26 onwards, we have included another prediction "Man of the Match".<br>' +
+          'Also you get a chance to win a reward of 250 points if you get every one of the predictions for a match correct.<br>' +
+          'Kindly look at the Rules page for more details on pointing.</b>',
+        confirmButtonText: 'Cool <i class="fa fa-thumbs-up"></i>'
+      });
+      this.predictionByUser.showMsg = false;
+    }
+
     this.ng4LoadingSpinnerService.show();
 
 
