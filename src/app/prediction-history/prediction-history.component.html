@@ -1,12 +1,12 @@
-<div class="mt-5 history-table table-responsive">
+<div class="mt-5 history-table table-responsive text-center">
   <p-table [columns]="cols" [value]="predictionHistory" dataKey="matchId">
     <ng-template pTemplate="header" let-columns>
       <tr>
-        <th style="width: 3em"></th>
-        <th>Match number</th>
+        <th style="width: 5em">Details</th>
+        <th style="width: 6em">Match number</th>
         <th>Home Team</th>
         <th>Away Team</th>
-        <th>Points</th>
+        <th style="width: 6em">Points</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-expanded="expanded" let-pHistory let-columns="columns">
@@ -25,7 +25,7 @@
     <ng-template pTemplate="rowexpansion" let-pHistory let-columns="columns">
       <tr>
         <td [attr.colspan]="columns.length + 1">
-          <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
+          <div class="ui-g ui-fluid text-justify" style="font-size:16px;padding:20px">
             <div class="ui-g-12 ui-md-3">
               <img style="width: 100%"
                 src="assets/{{getActualMatchWinner(pHistory)!== '--' ?
