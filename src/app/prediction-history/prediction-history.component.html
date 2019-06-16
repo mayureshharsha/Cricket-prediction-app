@@ -9,6 +9,8 @@
         <th>Actual Result</th>
         <th>Toss Prediction</th>
         <th>Actual Toss Result</th>
+        <th>Man of the Match Prediction</th>
+        <th>Actual Man of the Match Result</th>
         <th>Points</th>
       </tr>
     </ng-template>
@@ -21,6 +23,8 @@
         <td>{{getActualMatchWinner(pHistory)}}</td>
         <td>{{getPredictionTossWinner(pHistory)}}</td>
         <td>{{getActualTossWinner(pHistory)}}</td>
+        <td>{{pHistory.momResult? pHistory.momResult: '--'}}</td>
+        <td>{{pHistory.match.momResult? pHistory.match.momResult: '--'}}</td>
         <td>{{calculate(pHistory)}}</td>
       </tr>
     </ng-template>
