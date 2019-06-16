@@ -31,7 +31,7 @@ export class CardsContainerComponent implements OnInit {
     if (this.predictionByUser.showMsg && (new Date()) < (new Date('2019-06-20T09:30:00.000Z'))) {
       Swal.fire({
         title: '<i class="fa fa-bullhorn"></i> &nbsp;Update',
-        html: '<b>Hey Cricket lovers! From match no. 26 onwards, we have included another prediction "Man of the Match".<br>' +
+        html: '<b>Hey Cricket lovers! From match no. 26, we have included another prediction "Man of the Match".<br>' +
           'Also you get a chance to win a reward of 250 points if you get every one of the predictions for a match correct.<br>' +
           'Kindly look at the Rules page for more details on pointing.</b>',
         confirmButtonText: 'Cool <i class="fa fa-thumbs-up"></i>'
