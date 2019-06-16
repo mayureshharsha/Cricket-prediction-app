@@ -54,18 +54,23 @@
           </div>-->
           <div><span class="mr-4">Toss Ka Boss</span>
             <p-dropdown name="predictionResult" class="ml-4 pl-1" [options]="teams"
-                        [(ngModel)]="predictionResult.tossResult" optionLabel="label"></p-dropdown>
+                        [(ngModel)]="predictionResult.tossResult" optionLabel="label" placeholder="Select"></p-dropdown>
           </div>
         </div>
       </div>
 
-      <div class="form-group" *ngIf="singleMatchData.matchId>16">
+      <div class="form-group" *ngIf="singleMatchData.matchId > 25">
         <span class="mr-3 pr-1">Man of the match</span>
         <!--<select class="playing22 ng-tns-c7-2 ui-dropdown ui-widget ui-state-default ui-corner-all ui-helper-clearfix" [(ngModel)]="predictionResult.momResult" [ngModelOptions]="{standalone: true}">
           <option *ngFor="let player of playing22" name="players"> {{player}}</option>
         </select>-->
-        <p-dropdown name="predictionResult" class="p-0" [options]="playing22" [(ngModel)]="predictionResult.momResult"
-                    optionLabel="label"></p-dropdown>
+        <p-dropdown name="predictionMOM" [options]="playing22" [(ngModel)]="predictionResult.momResult" class="p-0"
+                    [group]="true" placeholder="Select">
+          <ng-template let-group pTemplate="group">
+            <img [src]="group.value" style="width:20px;vertical-align:middle"/>
+            <span style="margin-left:.25em">{{group.label}}</span>
+          </ng-template>
+        </p-dropdown>
       </div>
 
     </form>

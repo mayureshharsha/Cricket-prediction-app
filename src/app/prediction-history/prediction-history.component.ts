@@ -5,17 +5,31 @@ import {MessageService} from 'primeng/api';
 import {LoginService} from '../user-management/login/login.service';
 import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 import {MatchesService} from '../cards/matches.service';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-prediction-history',
   templateUrl: './prediction-history.component.html',
-  styleUrls: ['./prediction-history.component.css']
+  styleUrls: ['./prediction-history.component.css'],
+  animations: [
+    trigger('rowExpansionTrigger', [
+      state('void', style({
+        transform: 'translateX(-10%)',
+        opacity: 0
+      })),
+      state('active', style({
+        transform: 'translateX(0)',
+        opacity: 1
+      })),
+      transition('* <=> *', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
+    ])
+  ]
 })
 export class PredictionHistoryComponent implements OnInit {
 
   predictionHistory: PredictionHistory[];
   totalPoints = 0;
-
+  cols: any[];
 
   constructor(private predictionHistoryService: PredictionHistoryService,
               private messageService: MessageService,
@@ -43,6 +57,13 @@ export class PredictionHistoryComponent implements OnInit {
         console.log(error1);
       }
     );
+
+    this.cols = [
+      { field: 'matchId', header: 'Match number' },
+      { field: 'homeTeam', header: 'Home Team' },
+      { field: 'awayTeam', header: 'Away Team' },
+      { field: 'points', header: 'Points' }
+    ];
 
     this.matchesService.getPointsOfUser(JSON.parse(document.cookie).userId).subscribe(value => {
       this.totalPoints = value;
@@ -129,6 +150,14 @@ export class PredictionHistoryComponent implements OnInit {
     }
     if (pHistory.tossResult === pHistory.match.tossResult) {
       sum += 50;
+    }
+
+    if (pHistory.match.momResult !== null && pHistory.momResult === pHistory.match.momResult) {
+      sum += 200;
+    }
+
+    if (sum === 350) {
+      sum += 250;
     }
     return sum;
   }

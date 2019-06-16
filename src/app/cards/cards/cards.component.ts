@@ -3,7 +3,7 @@ import {AfterViewChecked, Component, Input, OnInit} from '@angular/core';
 import {MatchData} from 'src/app/model/match-data';
 import {PredictionData} from '../../model/prediction-data';
 import {MatchesService} from '../matches.service';
-import {MessageService, SelectItem} from 'primeng/api';
+import {MessageService, SelectItem, SelectItemGroup} from 'primeng/api';
 import {Router} from '@angular/router';
 import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 import {AllPlayers} from '../../model/all-players';
@@ -19,7 +19,7 @@ export class CardsComponent implements OnInit, AfterViewChecked {
   singleMatchData: MatchData;
 
   @Input()
-  allPlayers: AllPlayers[];
+  allPlayers: AllPlayers[] = [];
 
   @Input()
   disabled: boolean;
@@ -35,7 +35,7 @@ export class CardsComponent implements OnInit, AfterViewChecked {
   results: any[];
 
   awayTeamFlag: string;
-  playing22: any[] = [];
+  playing22: SelectItemGroup[] = [];
 
   humanReadableDate: string;
   display: boolean;
@@ -51,7 +51,6 @@ export class CardsComponent implements OnInit, AfterViewChecked {
 
     this.predictionResult = {} as PredictionData;
 
-
     this.results = [
       {name: 'YES', code: 'YES'},
       {name: 'NO', code: 'NO'}
@@ -59,29 +58,38 @@ export class CardsComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
-    this.allPlayers.filter(value =>
+    this.homeTeamFlag = '/assets/' + this.singleMatchData.homeTeam.name + '.png';
+    this.awayTeamFlag = '/assets/' + this.singleMatchData.awayTeam.name + '.png';
+    if (!this.disabled) {
+      this.allPlayers.filter(value =>
+        (value.team === this.singleMatchData.homeTeam.name) || (value.team === this.singleMatchData.awayTeam.name)
+      ).forEach(value1 => {
+        const players = value1.players;
+        players.forEach((player, index) => {
+          const name = player;
+          player = {};
+          player.label = name;
+          player.value = name;
+          players[index] = player;
+        });
 
-      (value.team === this.singleMatchData.homeTeam.name) || (value.team === this.singleMatchData.awayTeam.name)
-    ).forEach(value1 => {
-      this.playing22 = this.playing22.concat(value1.players);
-    });
+        const play = {
+          label : (value1.team === this.singleMatchData.homeTeam.name) ?
+            this.singleMatchData.homeTeam.name : this.singleMatchData.awayTeam.name,
+          value : (value1.team === this.singleMatchData.homeTeam.name) ? this.homeTeamFlag : this.awayTeamFlag,
+          items : players
+        };
+        this.playing22.push(play);
+      });
+    }
 
-    this.playing22.forEach((player, index) => {
-      const name = player;
-      player = {};
-      player.label = name;
-      player.value = name;
-      this.playing22[index] = player;
-    });
-
-    this.playing22.splice(0, 0, {
-      label: 'Select', value: null,
-    });
+    /*this.playing22.forEach(value => {
+        value.items.splice(0, 0, {
+          label: 'Select', value: null,
+        });
+      });*/
 
     this.teams = [
-      {
-        label: 'Select', value: null,
-      },
       {
         label: this.singleMatchData.homeTeam.name, value: 'W',
       },
@@ -90,9 +98,6 @@ export class CardsComponent implements OnInit, AfterViewChecked {
       }
     ];
 
-
-    this.homeTeamFlag = '/assets/' + this.singleMatchData.homeTeam.name + '.png';
-    this.awayTeamFlag = '/assets/' + this.singleMatchData.awayTeam.name + '.png';
     this.date = new Date(this.singleMatchData.dateTime);
     this.humanReadableDate = this.date.toLocaleDateString();
     this.humanReadableTime = this.date.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true});
@@ -160,6 +165,7 @@ export class CardsComponent implements OnInit, AfterViewChecked {
     this.predictionResult.matchId = this.singleMatchData.matchId;
     this.predictionResult.userId = JSON.parse(document.cookie).userId;
     this.predictionResult.tossResult = this.predictionResult.tossResult.value;
+    this.predictionResult.momResult = this.predictionResult.momResult;
 
     this.matchService.savePredictionData(this.predictionResult).subscribe(
       (response: any) => {
@@ -182,3 +188,4 @@ export class CardsComponent implements OnInit, AfterViewChecked {
     );
   }
 }
+

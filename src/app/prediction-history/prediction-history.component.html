@@ -1,32 +1,77 @@
-<div class="mt-5 text-center table-responsive history-table">
-  <p-table [value]="predictionHistory">
-    <ng-template pTemplate="header">
+<div class="mt-5 history-table table-responsive text-center">
+  <p-table [columns]="cols" [value]="predictionHistory" dataKey="matchId">
+    <ng-template pTemplate="header" let-columns>
       <tr>
-        <th>Match number</th>
+        <th style="width: 5em">Details</th>
+        <th style="width: 6em">Match number</th>
         <th>Home Team</th>
         <th>Away Team</th>
-        <th>Winner Prediction</th>
-        <th>Actual Result</th>
-        <th>Toss Prediction</th>
-        <th>Actual Toss Result</th>
-        <th>Points</th>
+        <th style="width: 6em">Points</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-pHistory>
+    <ng-template pTemplate="body" let-expanded="expanded" let-pHistory let-columns="columns">
       <tr>
+        <td>
+          <a href="#" [pRowToggler]="pHistory">
+            <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+          </a>
+        </td>
         <td>{{pHistory.matchId}}</td>
         <td>{{pHistory.match.homeTeam.name}} </td>
         <td>{{pHistory.match.awayTeam.name}}</td>
-        <td>{{getPredictionMatchWinner(pHistory)}}</td>
-        <td>{{getActualMatchWinner(pHistory)}}</td>
-        <td>{{getPredictionTossWinner(pHistory)}}</td>
-        <td>{{getActualTossWinner(pHistory)}}</td>
         <td>{{calculate(pHistory)}}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-pHistory let-columns="columns">
+      <tr>
+        <td [attr.colspan]="columns.length + 1">
+          <div class="ui-g ui-fluid text-justify" style="font-size:16px;padding:20px">
+            <div class="ui-g-12 ui-md-3">
+              <img style="width: 100%"
+                   src="assets/{{getActualMatchWinner(pHistory)!== '--' ?
+                getActualMatchWinner(pHistory): 'TBC Finalist'}}.png">
+            </div>
+            <div class="ui-g-12 ui-md-9">
+              <div class="ui-g">
+                <div class="ui-g-12">
+                  <i>Match Number:</i> &nbsp;{{pHistory.matchId}}
+                </div>
+                <div class="ui-g-12">
+                  <i>{{pHistory.match.homeTeam.name}} vs {{pHistory.match.awayTeam.name}}</i>
+                </div>
+                <div class="ui-g-12">
+                  <table id="inner-table" class="table-responsive">
+                    <tr>
+                      <td><i>Winner Prediction</i></td><td> {{getPredictionMatchWinner(pHistory)}}</td>
+                      <td><i>Actual Result</i></td><td> {{getActualMatchWinner(pHistory)}}</td>
+                      <!--<span *ngIf="pHistory.homeResult == pHistory.match.homeResult" style="color: green">+100</span>
+                      <span *ngIf="pHistory.match.homeResult == null" style="color: darkgrey">0</span>
+                      <span *ngIf="pHistory.match.homeResult != null && pHistory.homeResult == null" style="color: darkgrey">-100</span>
+                      <span else style="color: red">-50</span>-->
+                    </tr>
+                    <tr>
+                      <td><i>Toss Prediction</i></td><td> {{getPredictionTossWinner(pHistory)}}</td>
+                      <td><i>Actual Toss Result</i></td><td> {{getActualTossWinner(pHistory)}}</td>
+                    </tr>
+                    <tr>
+                      <td><i>Man of the Match Prediction</i></td><td> {{pHistory.momResult ? pHistory.momResult : '--'}}</td>
+                      <td><i>Actual Man of the Match
+                        Result</i></td><td> {{pHistory.match.momResult ? pHistory.match.momResult : '--'}}</td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="ui-g-12">
+                  <i>Points:</i> &nbsp;&nbsp;{{calculate(pHistory)}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="footer">
       <tr>
-        <td colspan="8" style="background-color: bisque" class="text-right">
+        <td colspan="5" style="background-color: bisque" class="text-right">
           Total Points : {{totalPoints}}
         </td>
       </tr>

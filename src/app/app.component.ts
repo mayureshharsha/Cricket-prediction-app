@@ -17,11 +17,10 @@ export class AppComponent implements OnInit {
   }
 
   hideMenu(): boolean {
-    return (this.router.url != '/login' && this.router.url != '/register');
+    return (this.router.url !== '/login' && this.router.url !== '/register');
   }
 
   ngOnInit() {
-
     this.currentRoute = this.router.url;
     this.items = [
       {
