@@ -24,14 +24,14 @@
     </ng-template>
     <ng-template pTemplate="rowexpansion" let-pHistory let-columns="columns">
       <tr>
-        <td [attr.colspan]="columns.length + 1">
-          <div class="ui-g ui-fluid text-justify" style="font-size:16px;padding:20px">
+        <td [attr.colspan]="columns.length + 1" style="padding: 0px">
+          <div class="ui-g ui-fluid text-justify" style="font-size:16px;padding:0px">
             <div class="ui-g-12 ui-md-3">
-              <img style="width: 100%"
+              <img style="width: 50%" class="embed-responsive-item"
                    src="assets/{{getActualMatchWinner(pHistory)!== '--' ?
                 getActualMatchWinner(pHistory): 'TBC Finalist'}}.png">
             </div>
-            <div class="ui-g-12 ui-md-9">
+            <div class="ui-g-12 ui-md-9" style="padding: 0px">
               <div class="ui-g">
                 <div class="ui-g-12">
                   <i>Match Number:</i> &nbsp;{{pHistory.matchId}}
@@ -39,7 +39,7 @@
                 <div class="ui-g-12">
                   <i>{{pHistory.match.homeTeam.name}} vs {{pHistory.match.awayTeam.name}}</i>
                 </div>
-                <div class="ui-g-12">
+                <div class="ui-g-12" style="padding: 0px">
                   <table id="inner-table" class="table-responsive">
                     <tr>
                       <td><i>Winner Prediction</i></td><td> {{getPredictionMatchWinner(pHistory)}}</td>
