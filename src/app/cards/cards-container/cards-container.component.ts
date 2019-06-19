@@ -5,7 +5,6 @@ import {MessageService} from 'primeng/api';
 import {PredictionHistoryService} from '../../prediction-history/prediction-history.service';
 import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 import {AllPlayers} from '../../model/all-players';
-import Swal from 'sweetalert2';
 
 
 @Component({
@@ -29,14 +28,6 @@ export class CardsContainerComponent implements OnInit {
 
   ngOnInit() {
     if (this.predictionByUser.showMsg && (new Date()) < (new Date('2019-06-20T09:30:00.000Z'))) {
-      Swal.fire({
-        title: '<i class="fa fa-bullhorn"></i> &nbsp;Update',
-        html: '<b>Hey Cricket lovers! From match no. 26, we have included another prediction "Man of the Match", with' +
-          ' 200 points for predicting correct and no negative points.<br>' +
-          'Also you get a chance to win a reward of 250 points if you get all the 3 predictions right for a match.<br>' +
-          'Kindly check out the Rules page for more details on pointing.</b>',
-        confirmButtonText: 'Cool <i class="fa fa-thumbs-up"></i>'
-      });
       this.predictionByUser.showMsg = false;
     }
 
