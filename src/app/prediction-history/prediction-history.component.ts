@@ -131,7 +131,7 @@ export class PredictionHistoryComponent implements OnInit {
   calculate(pHistory) {
     let sum = 0;
     if (pHistory.match.homeResult == null) {
-      return 0;
+      return '--';
     }
     if (pHistory.match.homeResult === pHistory.homeResult) {
       sum += 100;
