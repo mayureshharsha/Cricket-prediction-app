@@ -16,8 +16,8 @@ import {ToastModule} from 'primeng/toast';
 import {PredictionPipe} from './pipes/Prediction.pipe';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 import { RulesComponent } from './rules/rules.component';
-// import {HTTP_INTERCEPTORS} from '@angular/common/http';
-// import {TokenInterceptor} from './auth/auth.inteceptor';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {TokenInterceptor} from './auth/auth.inteceptor';
 
 
 
@@ -41,11 +41,9 @@ import { RulesComponent } from './rules/rules.component';
     ToastModule,
     Ng4LoadingSpinnerModule
   ],
-  providers: [MatchesService, MessageService],
+  providers: [MatchesService, MessageService, { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
   exports: [
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-//{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

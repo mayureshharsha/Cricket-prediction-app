@@ -127,7 +127,7 @@ export class CardsComponent implements OnInit, AfterViewChecked {
     const self = this;
     const timeinterval = setInterval(() => {
       const t = self.getTimeRemaining(endtime);
-      if (t.total > 0) {
+      if (t.total > 0 && !this.disabled) {
         self.clock.innerHTML = /*'days: ' + t.days + '<br>' +*/
           'Prediction locks in <b>' + t.hours + ' h : ' +
           t.minutes + ' m : ' +

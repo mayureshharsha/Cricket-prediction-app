@@ -1,16 +1,22 @@
 <div class="container mt-5 text-center table-responsive leader-table">
-  <p-table [value]="leadershipBoard">
-    <ng-template pTemplate="header">
+  <p-table #dt [value]="leadershipBoard" selectionMode="multiple" [columns]="cols">
+    <ng-template pTemplate="caption" *ngIf="username === 'pritesh' || username === 'test_user'">
+      <div class="ui-helper-clearfix">
+        <button type="button" pButton icon="fa fa-file-o" iconPos="left" label="Export to CSV" (click)="dt.exportCSV()"
+                style="float:right"></button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
       <tr>
-        <th>Rank</th>
-        <th>UserName</th>
-        <th>Total Points</th>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-leader let-rowIndex="rowIndex">
       <tr [class.my-result]="leader.username === username">
         <td>
-          <span>
+          <span style="float: right">
           <i *ngIf="(leader.currentRank - leader.previousRank) < 0" class="pi pi-arrow-circle-up"
              style="color: green"><span style="font-size: small">{{leader.previousRank - leader.currentRank}}</span></i>
           <i *ngIf="(leader.currentRank - leader.previousRank) > 0" class="pi pi-arrow-circle-down"
@@ -20,7 +26,15 @@
           </span>
           <span>{{leader.rank }}</span>
         </td>
-        <td><i *ngIf="leader.rank === 1" class="fa fa-trophy ml-lg-2"></i>
+        <td style="display: none">
+          {{leader.previousRank }}
+        </td>
+        <td><i *ngIf="leader.rank === 1" class="fa fa-trophy ml-lg-2"
+               style="color: darkgoldenrod; font-size: xx-large"></i>
+          <i *ngIf="leader.rank === 2" class="fa fa-trophy ml-lg-2 ml-1"
+             style="color: darkgrey; font-size: x-large"></i>
+          <i *ngIf="leader.rank === 3" class="fa fa-trophy ml-lg-2 ml-1"
+             style="color: saddlebrown;     padding-left: 2px;"></i>
           <span class="ml-lg-2">{{leader.username}}</span></td>
         <td>{{leader.points}}</td>
 

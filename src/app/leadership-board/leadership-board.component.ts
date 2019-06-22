@@ -14,6 +14,7 @@ export class LeadershipBoardComponent implements OnInit {
 
   leadershipBoard: LeadershipBoard[];
   username: string;
+  cols: any[];
 
   constructor(private matchesService: MatchesService,
               private messageService: MessageService,
@@ -44,7 +45,12 @@ export class LeadershipBoardComponent implements OnInit {
         this.messageService.add({severity: 'error', summary: 'Something went wrong', detail: 'Please try again'});
       }
     );
-
+    this.cols = [
+      { field: 'rank', header: 'Rank' },
+      { field: 'previousRank', header: 'Previous Rank' },
+      { field: 'username', header: 'Username' },
+      { field: 'points', header: 'Total Points' }
+    ];
   }
 
   compare( a, b ) {
