@@ -1,4 +1,13 @@
 <div class="container mt-5 text-center table-responsive leader-table">
+  <p-panel [toggleable]="true" [style]="{'margin-bottom':'20px'}">
+    <p-header style="padding-left: 4%">
+      <b>Recent Jackpot Winners</b> 🎉
+    </p-header>
+    <i *ngIf="!jackpotWinners" class="fa fa-refresh  fa-spin"></i>
+    <div style="width: auto" *ngFor="let jackpotWinner of jackpotWinners">
+      <i class="pi pi-user"></i> <b>{{jackpotWinner.username}}</b>  600 points for Match# <b>{{jackpotWinner.matchId}}</b>
+    </div>
+  </p-panel>
   <p-table #dt [value]="leadershipBoard" selectionMode="multiple" [columns]="cols">
     <ng-template pTemplate="caption" *ngIf="username === 'pritesh' || username === 'test_user'">
       <div class="ui-helper-clearfix">

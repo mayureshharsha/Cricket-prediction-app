@@ -18,6 +18,7 @@ import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 import { RulesComponent } from './rules/rules.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from './auth/auth.inteceptor';
+import {PanelModule} from 'primeng/panel';
 
 
 
@@ -39,7 +40,8 @@ import {TokenInterceptor} from './auth/auth.inteceptor';
     CardsModule,
     UserManagementModule,
     ToastModule,
-    Ng4LoadingSpinnerModule
+    Ng4LoadingSpinnerModule,
+    PanelModule
   ],
   providers: [MatchesService, MessageService, { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
   exports: [

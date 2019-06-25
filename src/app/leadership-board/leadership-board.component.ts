@@ -3,6 +3,7 @@ import {MatchesService} from '../cards/matches.service';
 import {LeadershipBoard} from '../model/leadership-board';
 import {MessageService} from 'primeng/api';
 import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
+import {JackpotWinner} from '../model/jackpotWinner';
 
 @Component({
   selector: 'app-leadership-board',
@@ -15,6 +16,7 @@ export class LeadershipBoardComponent implements OnInit {
   leadershipBoard: LeadershipBoard[];
   username: string;
   cols: any[];
+  jackpotWinners: JackpotWinner[];
 
   constructor(private matchesService: MatchesService,
               private messageService: MessageService,
@@ -45,6 +47,11 @@ export class LeadershipBoardComponent implements OnInit {
         this.messageService.add({severity: 'error', summary: 'Something went wrong', detail: 'Please try again'});
       }
     );
+
+    this.matchesService.getJackpotWinners().subscribe((jackpotWinners: JackpotWinner[]) => {
+      this.jackpotWinners = jackpotWinners;
+    });
+
     this.cols = [
       { field: 'rank', header: 'Rank' },
       { field: 'previousRank', header: 'Previous Rank' },

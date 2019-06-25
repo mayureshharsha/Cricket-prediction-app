@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {LeadershipBoard} from '../model/leadership-board';
 import {environment} from '../../environments/environment';
 import {AllPlayers} from '../model/all-players';
+import {JackpotWinner} from '../model/jackpotWinner';
 
 @Injectable({
   providedIn: 'root'
@@ -60,6 +61,17 @@ export class MatchesService {
     return this.http.get<AllPlayers[]>(
       environment.allPlayers
     );
+  }
 
+  getJackpotWinners(): Observable<JackpotWinner[]> {
+
+    return this.http.get<JackpotWinner[]>(
+      environment.hostUrl + '/v1/predmgmt/predictions/jackpotwinners', {
+        withCredentials: true,
+        headers: {
+          Token: document.cookie
+        }
+      }
+    );
   }
 }
