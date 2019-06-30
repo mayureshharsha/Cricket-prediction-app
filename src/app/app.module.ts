@@ -20,6 +20,8 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from './auth/auth.inteceptor';
 import {PanelModule} from 'primeng/panel';
 import { PlayerPredictionComponent } from './player-prediction/player-prediction.component';
+import {DropdownModule} from 'primeng/primeng';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -43,7 +45,9 @@ import { PlayerPredictionComponent } from './player-prediction/player-prediction
     UserManagementModule,
     ToastModule,
     Ng4LoadingSpinnerModule,
-    PanelModule
+    PanelModule,
+    DropdownModule,
+    FormsModule
   ],
   providers: [MatchesService, MessageService, { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
   exports: [
