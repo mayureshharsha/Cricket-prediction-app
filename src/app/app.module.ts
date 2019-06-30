@@ -19,6 +19,7 @@ import { RulesComponent } from './rules/rules.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from './auth/auth.inteceptor';
 import {PanelModule} from 'primeng/panel';
+import { PlayerPredictionComponent } from './player-prediction/player-prediction.component';
 
 
 
@@ -29,7 +30,8 @@ import {PanelModule} from 'primeng/panel';
     PredictionHistoryComponent,
     LeadershipBoardComponent,
     PredictionPipe,
-    RulesComponent
+    RulesComponent,
+    PlayerPredictionComponent
   ],
   imports: [
     TableModule,
