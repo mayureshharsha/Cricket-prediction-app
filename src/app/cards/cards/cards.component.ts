@@ -1,5 +1,5 @@
 /* tslint:disable:object-literal-key-quotes */
-import {AfterViewChecked, Component, Input, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, Input, OnChanges, OnInit} from '@angular/core';
 import {MatchData} from 'src/app/model/match-data';
 import {PredictionData} from '../../model/prediction-data';
 import {MatchesService} from '../matches.service';
@@ -13,7 +13,7 @@ import {AllPlayers} from '../../model/all-players';
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.css']
 })
-export class CardsComponent implements OnInit, AfterViewChecked {
+export class CardsComponent implements OnInit, AfterViewChecked, OnChanges {
 
   @Input()
   singleMatchData: MatchData;
@@ -60,28 +60,6 @@ export class CardsComponent implements OnInit, AfterViewChecked {
   ngOnInit() {
     this.homeTeamFlag = '/assets/' + this.singleMatchData.homeTeam.name + '.png';
     this.awayTeamFlag = '/assets/' + this.singleMatchData.awayTeam.name + '.png';
-    if (!this.disabled) {
-      this.allPlayers.filter(value =>
-        (value.team === this.singleMatchData.homeTeam.name) || (value.team === this.singleMatchData.awayTeam.name)
-      ).forEach(value1 => {
-        const players = value1.players;
-        players.forEach((player, index) => {
-          const name = player;
-          player = {};
-          player.label = name;
-          player.value = name;
-          players[index] = player;
-        });
-
-        const play = {
-          label : (value1.team === this.singleMatchData.homeTeam.name) ?
-            this.singleMatchData.homeTeam.name : this.singleMatchData.awayTeam.name,
-          value : (value1.team === this.singleMatchData.homeTeam.name) ? this.homeTeamFlag : this.awayTeamFlag,
-          items : players
-        };
-        this.playing22.push(play);
-      });
-    }
 
     /*this.playing22.forEach(value => {
         value.items.splice(0, 0, {
@@ -102,6 +80,33 @@ export class CardsComponent implements OnInit, AfterViewChecked {
     this.humanReadableDate = this.date.toLocaleDateString();
     this.humanReadableTime = this.date.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true});
     this.alert = (this.humanReadableDate === (new Date()).toLocaleDateString() && !this.disabled) ? true : false;
+  }
+
+  ngOnChanges() {
+    this.homeTeamFlag = '/assets/' + this.singleMatchData.homeTeam.name + '.png';
+    this.awayTeamFlag = '/assets/' + this.singleMatchData.awayTeam.name + '.png';
+    if (!this.disabled) {
+      this.allPlayers.filter(value =>
+        (value.team === this.singleMatchData.homeTeam.name) || (value.team === this.singleMatchData.awayTeam.name)
+      ).forEach(value1 => {
+        const players = Object.assign([], value1.players);
+        players.forEach((player, index) => {
+          const name = player;
+          player = {};
+          player.label = name;
+          player.value = name;
+          players[index] = player;
+        });
+
+        const play = {
+          label : (value1.team === this.singleMatchData.homeTeam.name) ?
+            this.singleMatchData.homeTeam.name : this.singleMatchData.awayTeam.name,
+          value : (value1.team === this.singleMatchData.homeTeam.name) ? this.homeTeamFlag : this.awayTeamFlag,
+          items : players
+        };
+        this.playing22.push(play);
+      });
+    }
   }
 
   ngAfterViewChecked() {
