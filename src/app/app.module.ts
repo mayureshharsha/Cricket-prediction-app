@@ -22,6 +22,7 @@ import {PanelModule} from 'primeng/panel';
 import { PlayerPredictionComponent } from './player-prediction/player-prediction.component';
 import {DropdownModule} from 'primeng/primeng';
 import {FormsModule} from '@angular/forms';
+import {DatePipe} from '@angular/common';
 
 
 
@@ -49,7 +50,7 @@ import {FormsModule} from '@angular/forms';
     DropdownModule,
     FormsModule
   ],
-  providers: [MatchesService, MessageService, { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
+  providers: [MatchesService, MessageService, { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }, DatePipe],
   exports: [
   ],
   bootstrap: [AppComponent]

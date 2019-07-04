@@ -1,58 +1,100 @@
-<div class="container" class="mt-3 text-center">
+<div class="container" class="mt-3 text-center player-prediction">
+<p-table [value]="dates">
+  <ng-template pTemplate="caption">
+    <div style="background-color: bisque">Points as per the day you predict</div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Date</th>
+      <th>Player of the Tournament</th>
+      <th>Highest Run Getter</th>
+      <th>Highest Wicket Taker</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-date>
+    <tr>
+      <td>{{date+4}} July</td>
+      <td>{{(11 - date) * 50}} </td>
+      <td>{{(11 - date) * 25}} </td>
+      <td>{{(11 - date) * 25}} </td>
+    </tr>
+  </ng-template>
+</p-table>
+  <br>
   <p-panel>
     <p-header>
       <b>Player of the Tournament</b> <i class="fa fa-crown"></i>
     </p-header>
-    Choose a Player :
-    <p-dropdown filter="true" [options]="players" [group]="true" [(ngModel)]="addonPrediction.pot">
-      <ng-template let-group pTemplate="group">
-        <img [src]="group.value" style="width:20px;vertical-align:middle"/>
-        <span style="margin-left:.25em">{{group.label}}</span>
-      </ng-template>
-    </p-dropdown>
-    <p-footer>
+    <div *ngIf="addonPrediction.pot == null;else chosenPot">
+      Choose a Player :
+      <p-dropdown filter="true" [options]="players" [group]="true" [(ngModel)]="selectAddonPrediction.pot">
+        <ng-template let-group pTemplate="group">
+          <img [src]="group.value" style="width:20px;vertical-align:middle"/>
+          <span style="margin-left:.25em">{{group.label}}</span>
+        </ng-template>
+      </p-dropdown>
+    </div>
+    <ng-template #chosenPot>
+      You have chosen <b>{{addonPrediction.pot}}</b> on <b>{{addonPrediction.potdate | date:'medium'}}</b>
+    </ng-template>
+    <p-footer *ngIf="addonPrediction.pot == null">
       <div class="text-center">
-        <button (click)="savePrediction()" pButton type="button" label="Predict Player of the Tournament" class="ui-button-success"></button>
+        <button (click)="savePotPrediction()" pButton type="button" label="Predict Player of the Tournament"
+                class="ui-button-success" [disabled]="selectAddonPrediction.pot == null"></button>
+      </div>
+    </p-footer>
+  </p-panel>
+
+  <br>
+
+  <p-panel>
+    <p-header>
+      <b>Highest Run Getter</b>
+    </p-header>
+    <div *ngIf="addonPrediction.hrg == null;else chosenMrg">
+      Choose a Player :
+      <p-dropdown filter="true" [options]="players" [group]="true" [(ngModel)]="selectAddonPrediction.hrg">
+        <ng-template let-group pTemplate="group">
+          <img [src]="group.value" style="width:20px;vertical-align:middle"/>
+          <span style="margin-left:.25em">{{group.label}}</span>
+        </ng-template>
+      </p-dropdown>
+    </div>
+    <ng-template #chosenMrg>
+      You have chosen <b>{{addonPrediction.hrg}}</b> on <b>{{addonPrediction.hrgdate | date:'medium'}}</b>
+    </ng-template>
+    <p-footer *ngIf="addonPrediction.hrg == null">
+      <div class="text-center">
+        <button (click)="saveHrgPrediction()" pButton type="button" label="Predict Highest Run Getter"
+                class="ui-button-success" [disabled]="selectAddonPrediction.hrg == null"></button>
       </div>
     </p-footer>
   </p-panel>
   <br>
   <p-panel>
     <p-header>
-      <b>Most Run Getter</b>
+      <b>Highest Wicket Taker</b>
     </p-header>
+    <div *ngIf="addonPrediction.hwt == null;else chosenMwt">
+
     Choose a Player :
-    <p-dropdown filter="true" [options]="players" [group]="true" [(ngModel)]="addonPrediction.hrg">
+    <p-dropdown filter="true" [options]="players" [group]="true" [(ngModel)]="selectAddonPrediction.hwt">
       <ng-template let-group pTemplate="group">
         <img [src]="group.value" style="width:20px;vertical-align:middle"/>
         <span style="margin-left:.25em">{{group.label}}</span>
       </ng-template>
     </p-dropdown>
-    <p-footer>
+    </div>
+    <ng-template #chosenMwt>
+      You have chosen <b>{{addonPrediction.hwt}}</b> on <b>{{addonPrediction.hwtdate | date:'medium'}}</b>
+    </ng-template>
+
+    <p-footer *ngIf="addonPrediction.hwt == null">
       <div class="text-center">
-        <button (click)="savePrediction()" pButton type="button" label="Predict Most Wicket Taker" class="ui-button-success"></button>
+        <button (click)="saveHwtPrediction()" pButton type="button" label="Predict Highest Wicket Taker"
+                class="ui-button-success" [disabled]="selectAddonPrediction.hwt == null"></button>
       </div>
     </p-footer>
   </p-panel>
   <br>
-  <p-panel>
-    <p-header>
-      <b>Most Wicket Taker</b>
-    </p-header>
-    Choose a Player :
-    <p-dropdown filter="true" [options]="players" [group]="true" [(ngModel)]="addonPrediction.hwt">
-      <ng-template let-group pTemplate="group">
-        <img [src]="group.value" style="width:20px;vertical-align:middle"/>
-        <span style="margin-left:.25em">{{group.label}}</span>
-      </ng-template>
-    </p-dropdown>
-    <p-footer>
-      <div class="text-center">
-        <button (click)="savePrediction()" pButton type="button" label="Predict Most Wicket Taker" class="ui-button-success"></button>
-      </div>
-    </p-footer>
-  </p-panel>
-  {{addonPrediction.pot}}/
-  {{addonPrediction.hrg}}/
-  {{addonPrediction.hwt}}
 </div>

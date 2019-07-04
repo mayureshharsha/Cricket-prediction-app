@@ -4,6 +4,6 @@ export interface AddonPrediction {
   hrg: string;
   hwt: string;
   potdate: Date;
-  mrgdate: Date;
-  mwtdate: Date;
+  hrgdate: Date;
+  hwtdate: Date;
 }

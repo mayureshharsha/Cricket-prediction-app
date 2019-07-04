@@ -34,4 +34,14 @@ export class PredictionHistoryService {
         }
       });
   }
+
+  getAddonPrediction() {
+    return this.http.get(environment.hostUrl + '/v1/predmgmt/predictions/addonPrediction/' + JSON.parse(document.cookie).userId,
+      {
+        withCredentials: true,
+        headers: {
+          Token: document.cookie
+        }
+      });
+  }
 }
