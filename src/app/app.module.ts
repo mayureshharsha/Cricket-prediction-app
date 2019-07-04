@@ -19,6 +19,10 @@ import { RulesComponent } from './rules/rules.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from './auth/auth.inteceptor';
 import {PanelModule} from 'primeng/panel';
+import { PlayerPredictionComponent } from './player-prediction/player-prediction.component';
+import {DropdownModule} from 'primeng/primeng';
+import {FormsModule} from '@angular/forms';
+import {DatePipe} from '@angular/common';
 
 
 
@@ -29,7 +33,8 @@ import {PanelModule} from 'primeng/panel';
     PredictionHistoryComponent,
     LeadershipBoardComponent,
     PredictionPipe,
-    RulesComponent
+    RulesComponent,
+    PlayerPredictionComponent
   ],
   imports: [
     TableModule,
@@ -41,9 +46,11 @@ import {PanelModule} from 'primeng/panel';
     UserManagementModule,
     ToastModule,
     Ng4LoadingSpinnerModule,
-    PanelModule
+    PanelModule,
+    DropdownModule,
+    FormsModule
   ],
-  providers: [MatchesService, MessageService, { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
+  providers: [MatchesService, MessageService, { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }, DatePipe],
   exports: [
   ],
   bootstrap: [AppComponent]

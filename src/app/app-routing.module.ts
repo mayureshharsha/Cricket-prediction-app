@@ -7,6 +7,7 @@ import {LoginComponent} from './user-management/login/login.component';
 import {RegistrationComponent} from './user-management/registration/registration.component';
 import {LogoutComponent} from './user-management/logout/logout.component';
 import {RulesComponent} from './rules/rules.component';
+import {PlayerPredictionComponent} from './player-prediction/player-prediction.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
   {
     path: 'rules',
     component: RulesComponent
+  },
+  {
+    path: 'player',
+    component: PlayerPredictionComponent
   }
 ];
 

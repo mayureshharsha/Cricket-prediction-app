@@ -31,6 +31,13 @@ export class AppComponent implements OnInit {
 
       },
       {
+        label: 'Player Prediction',
+        routerLink: 'player',
+        icon: 'pi pi-eye'
+
+
+      },
+      {
         label: 'Leader Board',
         routerLink: 'leadershipboard',
         icon: 'pi pi-users'
