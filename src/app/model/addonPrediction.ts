@@ -1,9 +1,9 @@
 export interface AddonPrediction {
   userId: number;
-  POT: string;
-  MRG: string;
-  MWT: string;
-  POTDate: Date;
-  MRGDate: Date;
-  MWTDate: Date;
+  pot: string;
+  hrg: string;
+  hwt: string;
+  potdate: Date;
+  mrgdate: Date;
+  mwtdate: Date;
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {AddonPrediction} from '../model/addonPrediction';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,16 @@ export class PredictionHistoryService {
         }
       });
 
+  }
+
+  saveAddonPrediction(addonPrediction: AddonPrediction) {
+    return this.http.post(environment.hostUrl + '/v1/predmgmt/predictions/addonPrediction',
+      addonPrediction,
+      {
+        withCredentials: true,
+        headers: {
+          Token: document.cookie
+        }
+      });
   }
 }
