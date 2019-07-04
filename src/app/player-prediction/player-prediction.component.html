@@ -1,0 +1,58 @@
+<div class="container" class="mt-3 text-center">
+  <p-panel>
+    <p-header>
+      <b>Player of the Tournament</b> <i class="fa fa-crown"></i>
+    </p-header>
+    Choose a Player :
+    <p-dropdown filter="true" [options]="players" [group]="true" [(ngModel)]="addonPrediction.pot">
+      <ng-template let-group pTemplate="group">
+        <img [src]="group.value" style="width:20px;vertical-align:middle"/>
+        <span style="margin-left:.25em">{{group.label}}</span>
+      </ng-template>
+    </p-dropdown>
+    <p-footer>
+      <div class="text-center">
+        <button (click)="savePrediction()" pButton type="button" label="Predict Player of the Tournament" class="ui-button-success"></button>
+      </div>
+    </p-footer>
+  </p-panel>
+  <br>
+  <p-panel>
+    <p-header>
+      <b>Most Run Getter</b>
+    </p-header>
+    Choose a Player :
+    <p-dropdown filter="true" [options]="players" [group]="true" [(ngModel)]="addonPrediction.hrg">
+      <ng-template let-group pTemplate="group">
+        <img [src]="group.value" style="width:20px;vertical-align:middle"/>
+        <span style="margin-left:.25em">{{group.label}}</span>
+      </ng-template>
+    </p-dropdown>
+    <p-footer>
+      <div class="text-center">
+        <button (click)="savePrediction()" pButton type="button" label="Predict Most Wicket Taker" class="ui-button-success"></button>
+      </div>
+    </p-footer>
+  </p-panel>
+  <br>
+  <p-panel>
+    <p-header>
+      <b>Most Wicket Taker</b>
+    </p-header>
+    Choose a Player :
+    <p-dropdown filter="true" [options]="players" [group]="true" [(ngModel)]="addonPrediction.hwt">
+      <ng-template let-group pTemplate="group">
+        <img [src]="group.value" style="width:20px;vertical-align:middle"/>
+        <span style="margin-left:.25em">{{group.label}}</span>
+      </ng-template>
+    </p-dropdown>
+    <p-footer>
+      <div class="text-center">
+        <button (click)="savePrediction()" pButton type="button" label="Predict Most Wicket Taker" class="ui-button-success"></button>
+      </div>
+    </p-footer>
+  </p-panel>
+  {{addonPrediction.pot}}/
+  {{addonPrediction.hrg}}/
+  {{addonPrediction.hwt}}
+</div>
