@@ -40,7 +40,7 @@
     <p-footer *ngIf="addonPrediction.pot == null">
       <div class="text-center">
         <button (click)="savePotPrediction()" pButton type="button" label="Predict Player of the Tournament"
-                class="ui-button-success" [disabled]="selectAddonPrediction.pot == null"></button>
+                class="ui-button-success" [disabled]="selectAddonPrediction.pot == null || disablePrediction"></button>
       </div>
     </p-footer>
   </p-panel>
@@ -66,7 +66,7 @@
     <p-footer *ngIf="addonPrediction.hrg == null">
       <div class="text-center">
         <button (click)="saveHrgPrediction()" pButton type="button" label="Predict Highest Run Getter"
-                class="ui-button-success" [disabled]="selectAddonPrediction.hrg == null"></button>
+                class="ui-button-success" [disabled]="selectAddonPrediction.hrg == null || disablePrediction"></button>
       </div>
     </p-footer>
   </p-panel>
@@ -92,7 +92,7 @@
     <p-footer *ngIf="addonPrediction.hwt == null">
       <div class="text-center">
         <button (click)="saveHwtPrediction()" pButton type="button" label="Predict Highest Wicket Taker"
-                class="ui-button-success" [disabled]="selectAddonPrediction.hwt == null"></button>
+                class="ui-button-success" [disabled]="selectAddonPrediction.hwt == null || disablePrediction"></button>
       </div>
     </p-footer>
   </p-panel>

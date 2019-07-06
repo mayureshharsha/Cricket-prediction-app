@@ -71,6 +71,10 @@ export class PlayerPredictionComponent implements OnInit {
       });
   }
 
+  get disablePrediction() {
+    return ((new Date()).getTime() > (new Date('2019-07-14T09:30:00.000Z')).getTime());
+  }
+
   savePotPrediction() {
     const prediction: AddonPrediction = {} as AddonPrediction;
     prediction.pot = this.selectAddonPrediction.pot;

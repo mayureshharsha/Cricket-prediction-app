@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {LoginService} from './login.service';
 import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 import {MessageService} from 'primeng/api';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.ng4LoadingSpinnerService.show()
+    this.ng4LoadingSpinnerService.show();
     this.loginService.login(this.user).subscribe(
       (response: any) => {
         this.ng4LoadingSpinnerService.hide();
@@ -36,6 +37,15 @@ export class LoginComponent implements OnInit {
           severity: 'success',
           summary: 'Login succeeded',
           detail: 'Success'
+        });
+        Swal.fire({
+          title: 'Player Prediction',
+          text: 'Just a Reminder, in case you haven\'t yet predicted. ' +
+            'To predict, click on Player Prediction tab.',
+          imageUrl: '../../assets/players.webp',
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: 'Custom image'
         });
         // this.deleteAllCookies();
         document.cookie = '';
