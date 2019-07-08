@@ -39,13 +39,8 @@ export class LoginComponent implements OnInit {
           detail: 'Success'
         });
         Swal.fire({
-          title: 'Player Prediction',
-          text: 'Just a Reminder, in case you haven\'t yet predicted. ' +
-            'To predict, click on Player Prediction tab.',
-          imageUrl: '../../assets/players.webp',
-          imageWidth: 400,
-          imageHeight: 200,
-          imageAlt: 'Custom image'
+          title: 'Point upgrades for Semi-final matches',
+          text: 'Please check out the RULES page.',
         });
         // this.deleteAllCookies();
         document.cookie = '';
