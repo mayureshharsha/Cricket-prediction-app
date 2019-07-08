@@ -5,7 +5,12 @@
     </p-header>
     <i *ngIf="!jackpotWinners" class="fa fa-refresh  fa-spin"></i>
     <div style="width: auto" *ngFor="let jackpotWinner of jackpotWinners">
-      <i class="pi pi-user"></i> <b>{{jackpotWinner.username}}</b>  600 points for Match# <b>{{jackpotWinner.matchId}}</b>
+      <i class="pi pi-user"></i> <b>{{jackpotWinner.username}}</b> won
+      <b *ngIf="jackpotWinner.matchId < 46">600</b>
+      <b *ngIf="jackpotWinner.matchId === 47">1200</b>
+      <b *ngIf="jackpotWinner.matchId === 46">1200</b>
+      <b *ngIf="jackpotWinner.matchId === 48">2400</b>
+      points for Match# <b>{{jackpotWinner.matchId}}</b>
     </div>
   </p-panel>
   <p-table #dt [value]="leadershipBoard" selectionMode="multiple" [columns]="cols">

@@ -129,10 +129,20 @@ export class PredictionHistoryComponent implements OnInit {
   }
 
   calculate(pHistory) {
-    let sum = 0;
+    const sum = 0;
     if (pHistory.match.homeResult == null) {
       return '--';
     }
+    if (pHistory.match.matchId === 46 || pHistory.match.matchId === 47) {
+      return this.calculateForSemiMatch(pHistory, sum);
+    } else if (pHistory.match.matchId === 48) {
+      return this.calculateForFinalMatch(pHistory, sum);
+    } else {
+      return this.calculateForLeagueMatch(pHistory, sum);
+    }
+  }
+
+  private calculateForLeagueMatch(pHistory, sum: number) {
     if (pHistory.match.homeResult === pHistory.homeResult) {
       sum += 100;
     }
@@ -158,6 +168,66 @@ export class PredictionHistoryComponent implements OnInit {
 
     if (sum === 350) {
       sum += 250;
+    }
+    return sum;
+  }
+
+  private calculateForSemiMatch(pHistory, sum: number) {
+    if (pHistory.match.homeResult === pHistory.homeResult) {
+      sum += 200;
+    }
+    if (pHistory.homeResult === null) {
+      sum -= 100;
+    } else if (pHistory.homeResult !== pHistory.match.homeResult) {
+      sum -= 50;
+    }
+    if (pHistory.match.tossResult === null) {
+      sum += 0;
+    } else if (pHistory.tossResult === null) {
+      sum -= 50;
+    } else if (pHistory.tossResult !== pHistory.match.tossResult) {
+      sum -= 25;
+    }
+    if (pHistory.tossResult === pHistory.match.tossResult) {
+      sum += 100;
+    }
+
+    if (pHistory.match.momResult !== null && pHistory.momResult === pHistory.match.momResult) {
+      sum += 400;
+    }
+
+    if (sum === 700) {
+      sum += 500;
+    }
+    return sum;
+  }
+
+  private calculateForFinalMatch(pHistory, sum: number) {
+    if (pHistory.match.homeResult === pHistory.homeResult) {
+      sum += 400;
+    }
+    if (pHistory.homeResult === null) {
+      sum -= 100;
+    } else if (pHistory.homeResult !== pHistory.match.homeResult) {
+      sum -= 50;
+    }
+    if (pHistory.match.tossResult === null) {
+      sum += 0;
+    } else if (pHistory.tossResult === null) {
+      sum -= 50;
+    } else if (pHistory.tossResult !== pHistory.match.tossResult) {
+      sum -= 25;
+    }
+    if (pHistory.tossResult === pHistory.match.tossResult) {
+      sum += 200;
+    }
+
+    if (pHistory.match.momResult !== null && pHistory.momResult === pHistory.match.momResult) {
+      sum += 800;
+    }
+
+    if (sum === 1400) {
+      sum += 1000;
     }
     return sum;
   }
