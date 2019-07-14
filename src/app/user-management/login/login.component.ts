@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           detail: 'Success'
         });
         Swal.fire({
-          title: 'Point upgrades for the Final matches',
+          title: 'Point upgraded for the Final match',
           text: 'Please check out the RULES page.',
         });
         // this.deleteAllCookies();
@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/home');
       },
       error => {
+        this.ng4LoadingSpinnerService.hide();
         let msg = '';
         if (error.status === 401) {
           msg = 'Invaild username/password';

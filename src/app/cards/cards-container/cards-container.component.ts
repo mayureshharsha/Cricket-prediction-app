@@ -31,7 +31,7 @@ export class CardsContainerComponent implements OnInit {
       this.predictionByUser.showMsg = false;
     }
 
-    this.ng4LoadingSpinnerService.show();
+    // this.ng4LoadingSpinnerService.show();
 
 
     this.matchesService.getAllPlayers().subscribe(
