@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           detail: 'Success'
         });
         Swal.fire({
-          title: 'Point upgrades for Semi-final matches',
+          title: 'Point upgrades for the Final matches',
           text: 'Please check out the RULES page.',
         });
         // this.deleteAllCookies();
